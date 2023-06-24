@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatiable" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PengHian's Portfolio Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/51e67edaa9.js" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div class="container">
+        <nav>
+          <img src="images-folder/index-images/logo.png" class="logo" />
+          <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+          </ul>
+          <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <div class="header-text">
+          <p>DevOps Engineer</p>
+          <h1>
+            Hi, I'm <span>PengHian</span><br />
+            From Singapore
+          </h1>
+        </div>
+      </div>
+    </div>
+    <!----------------------------------------about---------------------------------------->
+    <div id="about">
+      <div class="container">
+        <div class="row">
+          <div class="about-col-1">
+            <img src="images-folder/index-images/user.png" alt="" />
+          </div>
+          <div class="about-col-2">
+            <h1 class="sub-title">About me</h1>
+            <p>
+              Seasoned DevOps Engineer specializing in cloud platforms, CI/CD
+              tooling, and system optimization. Proven track record in enhancing
+              operational efficiency, security, and compliance. Continually
+              seeking opportunities to drive business growth through
+              technological advancements.
+            </p>
+            <div class="tab-titles">
+              <p class="tab-links active-link" onclick="opentab('skills')">
+                Skills
+              </p>
+              <p class="tab-links" onclick="opentab('experience')">
+                Experience
+              </p>
+              <p class="tab-links" onclick="opentab('education')">Education</p>
+            </div>
+            <div class="tab-contents active-tab" id="skills">
+              <ul>
+                <li>
+                  <span>Cloud Platforms</span><br />
+                  AWS, GCP, Azure, Tencent Cloud, Aliyun
+                </li>
+                <li>
+                  <span>Automation Tools</span><br />
+                  Ansible, Terraform
+                </li>
+                <li>
+                  <span>CI/CD Tools</span><br />
+                  Jenkins, Tencent Cloud CI/CD
+                </li>
+                <li>
+                  <span>Containerization</span><br />
+                  Docker, Kubernetes
+                </li>
+                <li>
+                  <span>Monitoring and Logging Tools</span><br />
+                  Grafana, Prometheus, Nagios, SolarWinds, Zabbix, Splunk
+                </li>
+                <li>
+                  <span>Firewall and Routers</span><br />
+                  Cisco, Sophos, Fortigate
+                </li>
+                <li>
+                  <span>Operating Systems</span><br />
+                  Linux (RHEL, CentOS, Ubuntu), Windows Server, MacOS
+                </li>
+                <li>
+                  <span>Scripting Languages</span><br />
+                  Python, Bash, Shell
+                </li>
+                <li>
+                  <span>Others</span><br />
+                  FastAPI, Selenium, OpenCV, HTML, CSS and JS
+                </li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="experience">
+              <ul>
+                <li>
+                  <span>May 2022 - Present</span><br />
+                  Devops engineer @ Tencent
+                </li>
+                <li>
+                  <span>Oct 2021 - May 2022</span><br />
+                  Devops engineer @ UP DEVLABS
+                </li>
+                <li>
+                  <span>Jul 2021 - Oct 2021</span><br />System Analyst @ Kenrich
+                  Partners
+                </li>
+                <li>
+                  <span>Nov 2020 - Jul 2021</span><br />
+                  Security Network Operation Center Engineer @ GovTech
+                </li>
+                <li>
+                  <span>Feb 2020 - Nov 2020</span><br />
+                  Network Operation Center Engineer @ Netpluz Asia
+                </li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="education">
+              <ul>
+                <li>
+                  <span>2023 - Present</span><br />Bachelor of computer science
+                  (Digital Systems Security)<br />University of wollongong
+                </li>
+                <li>
+                  <span>2020 - 2022 (mouse over for Transcript)</span><br />
+                  <div class="tooltip">Diploma in infocomm and digital media
+                    <span class="tooltiptext">
+                      <img src="images-folder/index-images/tp-transcript.jpeg" alt="Transcript">
+                    </span>
+                  </div><br />
+                  Temasek polytechnic
+                </li>
+                <li>
+                  <span>2015 - 2017</span><br />
+                  Diploma in sports and exercise science<br />Australia sports
+                  academy
+                </li>
+                <li>
+                  <span>2013 - 2015</span><br />
+                  Higher National ITE in information Technology<br />Institute
+                  of Technical Education
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!----------------------------------------services---------------------------------------->
+    <div id="services">
+      <div class="container">
+        <h1 class="sub-title">My Services</h1>
+        <div class="services-list">
+          <div>
+            <iconify-icon icon="logos:python"></iconify-icon>
+            <h2>Python</h2>
+            <p>Contact me for python script service</p>
+            <a href="https://www.linkedin.com/in/angpenghian/">Learn more</a>
+          </div>
+          <div>
+            <iconify-icon
+              icon="vscode-icons:file-type-terraform"
+            ></iconify-icon>
+            <h2>Terraform</h2>
+            <p>Contact me for terraform script service</p>
+            <a href="https://www.linkedin.com/in/angpenghian/">Learn more</a>
+          </div>
+          <div>
+            <iconify-icon icon="logos:kubernetes"></iconify-icon>
+            <h2>Kubernetes</h2>
+            <p>Contact me for kubernetes configuration services</p>
+            <a href="https://github.com/angpenghian?tab=repositories"
+              >Learn more</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!----------------------------------------portfolio---------------------------------------->
+    <div id="portfolio">
+      <div class="container">
+        <h1 class="sub-title">My Projects</h1>
+        <div class="work-list">
+          <div class="work">
+            <img src="images-folder/index-images/resume-infra.png" />
+            <div class="layer">
+              <h3>Resume Website</h3>
+              <p>
+                Amazon Web Service<br />Terraform<br />Kubernetes<br />Docker<br />Nginx
+                Web Server<br />Bash<br />Html<br />CSS<br />JavaScript
+              </p>
+              <a href="pages/project1/resume-website.html"
+                ><i class="fa-solid fa-arrow-up-right-from-square"></i
+              ></a>
+            </div>
+          </div>
+          <div class="work">
+            <img src="images-folder/index-images/resume-cicd.png" />
+            <div class="layer">
+              <h3>CI/CD for Resume Website</h3>
+              <p>
+                Amazon Web Service<br />Terraform<br />Jenkins<br />Sonarqube<br />Git<br />Github<br />Bash
+              </p>
+              <a
+                href="https://github.com/angpenghian/resume/tree/main/Terraform/cicd"
+                ><i class="fa-solid fa-arrow-up-right-from-square"></i
+              ></a>
+            </div>
+          </div>
+          <div class="work">
+            <img src="images-folder/index-images/resume-website.png" />
+            <div class="layer">
+              <h3>Logging and Monitoring for Resume Website</h3>
+              <p>Amazon Web Service<br />Terraform<br />Helm<br />Prometheus<br />Grafana<br />Git<br />Github<br />Bash</p>
+              <a href="https://github.com/angpenghian?tab=repositories"
+                ><i class="fa-solid fa-arrow-up-right-from-square"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <a href="https://github.com/angpenghian?tab=repositories" class="btn">See More</a>
+      </div>
+    </div>
+    <!----------------------------------------contact---------------------------------------->
+    <div id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="contact-left">
+            <h1 class="sub-title">Contact Me</h1>
+            <p><i class="fa-solid fa-paper-plane"></i>penghian@gmail.com</p>
+            <p><i class="fa-solid fa-phone"></i>+65 97393952</p>
+            <div class="social-icons">
+              <a href="https://www.linkedin.com/in/angpenghian/"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+              <a href="https://github.com/angpenghian"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a href="https://www.credly.com/users/penghian-ang/badges"
+                ><iconify-icon icon="simple-icons:credly"></iconify-icon
+              ></a>
+            </div>
+            <a href="images-folder/others/Penghian_resume.pdf" download class="btn btn2"
+              ><i class="fa-solid fa-file-arrow-down"></i> Download CV</a
+            >
+          </div>
+          <div class="contact-right">
+            <form name="submit-to-google-sheet">
+              <input type="text" name="Name" placeholder="Your Name" required />
+              <input
+                type="email"
+                name="Email"
+                placeholder="Your Email"
+                required
+              />
+              <textarea
+                name="Message"
+                rows="6"
+                placeholder="Your Message"
+              ></textarea>
+              <button type="submit" class="btn btn2">Submit</button>
+            </form>
+            <span id="msg"></span>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>Copyright ⓒ PengHian Ang</p>
+      </div>
+    </div>
+    <!------------------------------to top button------------------------------>
+    <button onclick="topFunction()" id="topBtn" title="Go to top">
+      <iconify-icon icon="icon-park-outline:to-top"></iconify-icon>
+    </button>
+  </body>
+</html>

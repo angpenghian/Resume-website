@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatiable" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PengHian's Portfolio Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/51e67edaa9.js" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="header">
+      <div class="container">
+        <nav>
+          <img src="../../images-folder/resume-website-images/logo.png" class="logo" />
+          <ul id="sidemenu">
+            <li><a href="../../index.html#header">Home</a></li>
+            <li><a href="../../index.html#about">About</a></li>
+            <li><a href="../../index.html#services">Services</a></li>
+            <li><a href="../../index.html#portfolio">Portfolio</a></li>
+            <li><a href="../../index.html#contact">Contact</a></li>
+            <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+          </ul>
+          <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+      </div>
+    </div>
+    <!----------------------------------------blog---------------------------------------->
+    <div class="content">
+      <div class="container">
+        <div class="blog">
+          <h1 class="sub-title">
+            Building a Resume Website on AWS EC2 Using Nginx,
+            Terraform,Kubernetes, and Docker
+          </h1>
+          <h2>PengHian Ang</h2>
+          <h3>June 7, 2023</h3>
+          <p>
+            My primary objective for this project is to demonstrate my expertise
+            as a DevOps Engineer while expanding my technical skill set. I
+            believe that true learning happens through hands-on experience and
+            problem-solving.
+          </p>
+          <p>
+            Therefore, I will actively engage in the development process to
+            showcase my knowledge and improve my abilities along the way.
+          </p>
+          <p>
+            Additionally, I aim for this project to serve as a comprehensive
+            guide for individuals looking to establish their own DevOps
+            infrastructure. By documenting the entire process and sharing my
+            experiences, I hope to provide valuable insights and practical
+            instructions that can assist others in successfully implementing
+            similar systems.
+          </p>
+          <h4>Prerequisites</h4>
+          <ol>
+            <li>
+              <strong>AWS Account:</strong>
+              <p>
+                An AWS account is essential for using Terraform to build
+                projects. It allows Terraform to interact with and manage AWS
+                resources, facilitating infrastructure provisioning and
+                management.
+              </p>
+            </li>
+            <li>
+              <strong>Terraform Installed:</strong>
+              <p>
+                Terraform must be installed on your computer to build this
+                project. Terraform is an infrastructure-as-code (IaC) tool that
+                automates and manages cloud resources. Installing Terraform on
+                your PC enables you to define your infrastructure as code and
+                deploy it to AWS.
+              </p>
+            </li>
+            <li>
+              <strong>Git Installed:</strong>
+              <p>
+                Git must be installed on your computer to clone the project from
+                my GitHub repository. Git is a version control system that
+                facilitates efficient collaboration and code change tracking.
+              </p>
+            </li>
+          </ol>
+          <h4>Deciding the Infrastructure Setup</h4>
+          <p>
+            For this stage of the project <span style="color: #0050ef">(hightlighted in blue)</span>, I have chosen the following
+            infrastructure setup. The image below illustrates the setup:
+          </p>
+          <img src="../../images-folder/resume-website-images/current-setup.png" alt="Infrastructure Image" />
+          <ul>
+            <li><span>Terraform: </span>For AWS resource creation.</li>
+            <li>
+              <span>CloudFront: </span>To boost user experience with caching
+              services.
+            </li>
+            <li>
+              <span>Route 53 and AWS Certificate Manager: </span>For DNS
+              management and SSL certificate configuration for angpenghian.com.
+            </li>
+            <li>
+              <span>AWS Application Load Balancer: </span>Load balancing across
+              EC2 instances, currently a single instance for proof of concept.
+            </li>
+            <li>
+              <span>AWS Internet Gateway: </span>Provides internet access to VPC
+              resources.
+            </li>
+            <li>
+              <span>Kubernetes cluster: </span>Consists of a master and a worker
+              node. NGINX deployment on worker node, leveraging PV and PVC for
+              file reading on EC2 server. Service made public via NodePort.
+            </li>
+          </ul>
+
+          <h4>instructions:</h4>
+          <ol>
+            <li>
+              Open a terminal (Command Prompt on Windows, Terminal on Mac or
+              Linux).
+            </li>
+            <li>
+              Navigate to the empty folder where you want to clone the
+              repository. You can use the cd (change directory) command to do
+              this. For example:
+              <pre class="codebox"><code class="language-bash" id="code1">cd /path/to/your/folder</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+            </li>
+            <li>
+              Once you're in the right directory, use the git clone command
+              followed by the URL of the repository:
+              <pre class="codebox"><code class="language-git" id="sample-code">git clone https://github.com/angpenghian/resume.git</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+            </li>
+            <li>
+              Press Enter and the repository will be cloned into your chosen
+              folder.
+            </li>
+            <li>
+              After cloning the GitHub repository, use the subsequent command to
+              navigate to the terraform directory that includes the necessary
+              Terraform and Bash scripts for configuring the infrastructure.
+              <pre class="codebox"><code class="language-bash" id="sample-code">cd /Your Folder Directory/Terraform/infra/</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+            </li>
+            <li>
+              First, create a new directory called 'secrets' using the command
+              below:
+              <pre class="codebox"><code class="language-bash" id="sample-code">mkdir secrets</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+            </li>
+            <li>
+              Next, log into your AWS root user account. Use the console's
+              search bar to find the IAM service.
+              <img src="../../images-folder/resume-website-images/aws-iam-search.png" />
+              Inside the IAM interface, navigate to the Users section and choose
+              'Add users'.
+              <img src="../../images-folder/resume-website-images/aws-iam-users.png" />
+              Follow the on-screen instructions to create your IAM user.
+              <img src="../../images-folder/resume-website-images/aws-iam-testing.png" />
+              Once the user is created, click on it. In the 'Security
+              credentials' tab, find 'Create access key'.
+              <img src="../../images-folder/resume-website-images/aws-iam-user-testing.png" />
+              <img src="../../images-folder/resume-website-images/aws-iam-key.png" />
+              It's crucial to save and document both keys for future reference.
+              <img src="../../images-folder/resume-website-images/aws-key.png" />
+            </li>
+            <li>
+              Now, create a key pair to enable SSH access into the AWS EC2
+              machines you'll be making. Use the console's search bar to find
+              "Key pairs".
+              <img src="../../images-folder/resume-website-images/aws-keypairs-search.png" />
+              In the Key pairs section, select Create key pair. Take note of the
+              region you're in because key pairs are region-specific.
+              <img src="../../images-folder/resume-website-images/aws-keypairs-create.png" />
+              After selecting "Create key pair", input your preferred key name.
+              <img src="../../images-folder/resume-website-images/aws-createkey.png" />
+              Upon completion, the key pair will be generated and a .pem file
+              will be downloaded.
+              <img src="../../images-folder/resume-website-images/aws-createkey-finish.png" />
+            </li>
+            <li>
+              Afterward, save the access keys and key pairs in the given format
+              within the 'secrets' directory.
+              <img src="../../images-folder/resume-website-images/folder.png" />
+            </li>
+            <li>
+              Now that your security credentials are properly set up, there are
+              still a few files you need to edit for the Terraform setup.
+              <img src="../../images-folder/resume-website-images/aws-terraform-p1.png" />
+            </li>
+            <li>
+              In the provider file, you can modify the access key location if
+              you've stored it elsewhere.
+              <img src="../../images-folder/resume-website-images/providertf.png" />
+            </li>
+            <li>
+              For terraform.tfvars, you can modify parameters such as the EC2
+              machine image, your instance type, private key path, the domain
+              you're using, and a validated SSL certificate ARN from AWS Cert
+              Manager.
+              <img src="../../images-folder/resume-website-images/tfvars.png" />
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!----------------------------------------contact---------------------------------------->
+    <div id="contact">
+      <div class="copyright">
+        <p>Copyright ⓒ PengHian Ang</p>
+      </div>
+    </div>
+    <!----------------------------------------scripts---------------------------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-git.min.js"></script>
+    <script src="main.js"></script>
+    <!------------------------------to top button------------------------------>
+    <button onclick="topFunction()" id="topBtn" title="Go to top">
+      <iconify-icon icon="icon-park-outline:to-top"></iconify-icon>
+    </button>
+  </body>
+</html>
