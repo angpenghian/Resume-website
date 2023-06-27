@@ -27,13 +27,3 @@ variable "certificate_arn" {
   description = "The certificate arn"
   type        = string
 }
-
-variable "create_jenkins_server_and_route53_rule" {
-  description = "Whether to create the whole jenkins server stack change true to create and false to delete"
-  default     = true
-}
-
-variable "create_sonarqube_server_and_route53_rule" {
-  description = "Whether to create the whole sonarqube server stack change true to create and false to delete"
-  default     = false
-}
