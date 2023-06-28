@@ -26,15 +26,13 @@ spec:
           limits:
             memory: 256Mi
             cpu: 250m
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: role
-                operator: In
-                values:
-                - general
+        volumeMounts:
+          - name: jenkins-data
+            mountPath: /usr/share/nginx/html
+      volumes:
+        - name: jenkins-data
+          persistentVolumeClaim:
+            claimName: jenkins-pv-claim
       # tolerations:
       # - key: team
       #   operator: Equal
