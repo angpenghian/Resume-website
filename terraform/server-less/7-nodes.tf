@@ -55,12 +55,6 @@ resource "aws_eks_node_group" "private-nodes" {
     role = "general"
   }
 
-  # taint {
-  #   key    = "team"
-  #   value  = "devops"
-  #   effect = "NO_SCHEDULE"
-  # }
-
   # launch_template {
   #   name    = aws_launch_template.eks-with-disks.name
   #   version = aws_launch_template.eks-with-disks.latest_version
