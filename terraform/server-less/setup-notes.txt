@@ -1,0 +1,4 @@
+aws eks --region $(terraform output -raw region) update-kubeconfig \
+    --name $(terraform output -raw cluster_name)
+
+cp -r /var/jenkins_home/workspace/resume-website/website/* /usr/share/nginx/html/
