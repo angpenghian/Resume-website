@@ -27,16 +27,16 @@ resource "aws_route53_record" "jenkins_angpenghian" {
   depends_on = [aws_eip_association.jenkins_server_eip_assoc]
 }
 
-resource "aws_route53_record" "sonarqube_angpenghian" {
-  count   = var.create_sonarqube_server_and_route53_rule ? 1 : 0
-  zone_id = aws_route53_zone.resume_hosted_zone.zone_id
-  name    = "sonarqube.angpenghian.com"
-  type    = "A"
-  ttl     = "300"
-  records = [aws_eip.sonarqube_server_eip[0].public_ip]
+# resource "aws_route53_record" "sonarqube_angpenghian" {
+#   count   = var.create_sonarqube_server_and_route53_rule ? 1 : 0
+#   zone_id = aws_route53_zone.resume_hosted_zone.zone_id
+#   name    = "sonarqube.angpenghian.com"
+#   type    = "A"
+#   ttl     = "300"
+#   records = [aws_eip.sonarqube_server_eip[0].public_ip]
 
-  depends_on = [aws_eip_association.sonarqube_server_eip_assoc]
-}
+#   depends_on = [aws_eip_association.sonarqube_server_eip_assoc]
+# }
 
 resource "aws_route53domains_registered_domain" "angpenghian_registered_domain" {
   domain_name = var.domain
