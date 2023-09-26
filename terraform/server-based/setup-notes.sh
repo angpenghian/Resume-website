@@ -10,7 +10,7 @@ ssh-keygen
 #enter
 #enter
 
-ssh-copy-id ec2-user@kubernetes-machine-public-ip
+ssh-copy-id ec2-user@54.251.61.153
 
 scp -r /var/jenkins_home/workspace/resume-website/Resume/* ec2-user@3.1.28.163:/home/ec2-user/resume
 scp -r /var/jenkins_home/workspace/resume-website/Resume/* ec2-user@18.143.8.165:/home/ec2-user/resume
@@ -26,8 +26,8 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=Num
 # On the worker node server, use the following format to execute the join command you copied in the previous step:
 kubeadm join [your-ip]:6443 --token [your-token] --discovery-token-ca-cert-hash [your-hash]
 # An example of how the join command should look is given below:
-sudo kubeadm join 10.0.2.239:6443 --token 6a3r2s.q3b6oiah7qjq83h0 \
-        --discovery-token-ca-cert-hash sha256:a312048b660eae4a1a2c703c99624ebf7c69b3ad4fc3c2457dc69390d7eb003c
+sudo kubeadm join 10.0.11.69:6443 --token qov4gn.ula0rbsv8knyi7f9 \
+        --discovery-token-ca-cert-hash sha256:82e8c25827da977ef476ca482e94dd6b74eddf488bd30f87fa8fb7a097d7508f
 
 # To start using your cluster, you need to run the following as a regular user:
 mkdir -p $HOME/.kube

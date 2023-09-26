@@ -31,6 +31,13 @@ subjects:
   name: jenkins-admin
   namespace: devops-tools
 ---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -38,23 +45,24 @@ metadata:
   labels:
     type: local
 spec:
+  storageClassName: local-storage
   claimRef:
     name: jenkins-pv-claim
     namespace: devops-tools
   capacity:
     storage: 10Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   local:
     path: /mnt
   nodeAffinity:
     required:
       nodeSelectorTerms:
       - matchExpressions:
-        - key: role
+        - key: kubernetes.io/hostname
           operator: In
           values:
-          - general
+          - jenkins
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -62,8 +70,9 @@ metadata:
   name: jenkins-pv-claim
   namespace: devops-tools
 spec:
+  storageClassName: local-storage
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 3Gi
@@ -135,23 +144,25 @@ metadata:
       prometheus.io/scrape: 'true'
       prometheus.io/path:   /
       prometheus.io/port:   '8080'
-      service.beta.kubernetes.io/aws-load-balancer-type: nlb
 spec:
   selector:
     app: jenkins-server
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 8080
       targetPort: 8080
+      nodePort: 32000
 # Jenkins will ask for the initial Admin password when you access the dashboard for the first time.
 # You can get that from the pod logs either from the Kubernetes dashboard or CLI. You can get the pod details using the following CLI command.
 # kubectl get pods --namespace=devops-tools
-# kubectl logs jenkins-5c899ff9b9-hfb6s --namespace=devops-tools
+# kubectl logs jenkins-bf6b8d5fb-g7zr5 --namespace=devops-tools
 
-# To check the files inside the Jenkins pod after a Jenkins job build
-# kubectl get pods -n devops-tools
-# kubectl exec -it jenkins-5c899ff9b9-hfb6s -n devops-tools -- /bin/bash
-# cd /usr/share/nginx/html
-# ls -la
-
-# kubectl exec -it nginx-5657c8764d-f29qv -n devops-tools -- /bin/bash
+# execute this inside the jenkins pod to ensure connectivity betweens jenkins pod and ur ngix-nodes
+# kubectl get pods --namespace=devops-tools
+# kubectl exec -it jenkins-bf6b8d5fb-g7zr5 --namespace=devops-tools -- /bin/bash
+# ssh-keygen
+# enter
+# enter
+# ssh-copy-id ec2-user@54.251.61.153
+# ssh-copy-id ec2-user@node01-public-ip
+# ssh-copy-id ec2-user@node02-public-ip
