@@ -163,6 +163,6 @@ spec:
 # ssh-keygen
 # enter
 # enter
-# ssh-copy-id ec2-user@masternode-public-ip
-# ssh-copy-id ec2-user@node01-public-ip
+# ssh-copy-id ec2-user@3.0.161.142
+# ssh-copy-id ec2-user@18.140.192.204
 # ssh-copy-id ec2-user@node02-public-ip
