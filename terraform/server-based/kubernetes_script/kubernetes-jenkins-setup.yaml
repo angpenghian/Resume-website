@@ -163,6 +163,14 @@ spec:
 # ssh-keygen
 # enter
 # enter
-# ssh-copy-id ec2-user@3.0.161.142
-# ssh-copy-id ec2-user@18.140.192.204
+# ssh-copy-id ec2-user@masternode-public-ip
+# wait for the password prompt
+# ssh-copy-id ec2-user@node01-public-ip
+# wait for the password prompt
 # ssh-copy-id ec2-user@node02-public-ip
+# wait for the password prompt
+
+# to copy files from jenkins pod to nginx pod
+# at the end of the jenkins pipeline, add the following to build step execute shell
+# scp -r /var/jenkins_home/workspace/resume-website/website/* ec2-user@<masternode-public-ip>:/home/ec2-user/website/
+# scp -r /var/jenkins_home/workspace/resume-website/website/* ec2-user@<node01-public-ip>:/home/ec2-user/website/
