@@ -14,10 +14,10 @@ resource "aws_route_table_association" "masternode_link_route_table" {
   route_table_id = aws_route_table.resume_route_table.id
 }
 
-# resource "aws_route_table_association" "node01_link_route_table" {
-#   subnet_id      = aws_subnet.node01_subnet.id
-#   route_table_id = aws_route_table.resume_route_table.id
-# }
+resource "aws_route_table_association" "node01_link_route_table" {
+  subnet_id      = aws_subnet.node01_subnet.id
+  route_table_id = aws_route_table.resume_route_table.id
+}
 
 # resource "aws_route_table_association" "node02_link_route_table" {
 #   subnet_id      = aws_subnet.node02_subnet.id

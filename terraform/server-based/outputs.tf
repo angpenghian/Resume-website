@@ -3,10 +3,10 @@ output "masternode_server" {
   value       = aws_eip.masternode_eip.public_ip
 }
 
-# output "node01_server" {
-#   description = "The public IP of node01_server"
-#   value       = aws_eip.node01_server_eip.public_ip
-# }
+output "node01_server" {
+  description = "The public IP of node01_server"
+  value       = aws_eip.node01_server_eip.public_ip
+}
 
 output "jenkis_server" {
   description = "The public IP of jenkins_server"

@@ -22,13 +22,11 @@ resource "aws_lb_target_group_attachment" "masternote_attach_1" {
   port             = 30080
 }
 
-# resource "aws_lb_target_group_attachment" "node01_attach_2" {
-#   target_group_arn = aws_lb_target_group.resume_target_group.arn
-#   target_id        = aws_instance.node01_server.id
-#   port             = 30080
-# }
-
-
+resource "aws_lb_target_group_attachment" "node01_attach_2" {
+  target_group_arn = aws_lb_target_group.resume_target_group.arn
+  target_id        = aws_instance.node01_server.id
+  port             = 30080
+}
 
 resource "aws_lb" "resume_alb" {
   name               = "resume-alb"

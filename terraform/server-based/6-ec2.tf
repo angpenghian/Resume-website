@@ -67,46 +67,46 @@ resource "null_resource" "provision_masternode_server" {
 }
 
 
-# ### Node01 Server
-# resource "aws_eip_association" "node01_server_eip_assoc" {
-#   instance_id   = aws_instance.node01_server.id
-#   allocation_id = aws_eip.node01_server_eip.id
-# }
-# resource "aws_instance" "node01_server" {
-#   ami                    = var.ami
-#   instance_type          = var.instance_type
-#   key_name               = var.key_name
-#   vpc_security_group_ids = [aws_security_group.resume_sg.id]
-#   subnet_id              = aws_subnet.node01_subnet.id
-#   user_data              = file("bash_scripts/install-docker-kubernetes-node01.sh")
+### Node01 Server
+resource "aws_eip_association" "node01_server_eip_assoc" {
+  instance_id   = aws_instance.node01_server.id
+  allocation_id = aws_eip.node01_server_eip.id
+}
+resource "aws_instance" "node01_server" {
+  ami                    = var.ami
+  instance_type          = "t3.small"
+  key_name               = var.key_name
+  vpc_security_group_ids = [aws_security_group.resume_sg.id]
+  subnet_id              = aws_subnet.node01_subnet.id
+  user_data              = file("bash_scripts/install-docker-kubernetes-node01.sh")
 
-#   tags = {
-#     Name = "node01_server_terraform"
-#   }
-# }
-# resource "aws_eip" "node01_server_eip" {
-#   instance = aws_instance.node01_server.id
-#   domain   = "vpc"
-# }
+  tags = {
+    Name = "node01_server_terraform"
+  }
+}
+resource "aws_eip" "node01_server_eip" {
+  instance = aws_instance.node01_server.id
+  domain   = "vpc"
+}
 
 
-# resource "null_resource" "provision_node01_server" {
-#   depends_on = [aws_eip_association.node01_server_eip_assoc]
-#   triggers = {
-#     instance_id = aws_instance.node01_server.id
-#   }
-#   provisioner "file" {
-#     source      = "../../website"
-#     destination = "/home/ec2-user/website/"
+resource "null_resource" "provision_node01_server" {
+  depends_on = [aws_eip_association.node01_server_eip_assoc]
+  triggers = {
+    instance_id = aws_instance.node01_server.id
+  }
+  provisioner "file" {
+    source      = "../../website"
+    destination = "/home/ec2-user/website/"
 
-#     connection {
-#       type        = "ssh"
-#       user        = "ec2-user"
-#       private_key = file(var.private_key_path)
-#       host        = aws_eip.node01_server_eip.public_ip
-#     }
-#   }
-# }
+    connection {
+      type        = "ssh"
+      user        = "ec2-user"
+      private_key = file(var.private_key_path)
+      host        = aws_eip.node01_server_eip.public_ip
+    }
+  }
+}
 
 
 ## Jenkins Server
