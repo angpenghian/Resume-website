@@ -12,8 +12,8 @@ ssh-keygen
 
 ssh-copy-id ec2-user@54.251.61.153
 
-scp -r /var/jenkins_home/workspace/resume-website/Resume/* ec2-user@3.1.28.163:/home/ec2-user/resume
-scp -r /var/jenkins_home/workspace/resume-website/Resume/* ec2-user@18.143.8.165:/home/ec2-user/resume
+scp -r /var/jenkins_home/workspace/resume-website/Resume/* ec2-user@3.0.161.142:/home/ec2-user/resume
+scp -r /var/jenkins_home/workspace/resume-website/Resume/* ec2-user@18.140.192.204:/home/ec2-user/resume
 
 
 
