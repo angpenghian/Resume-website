@@ -218,7 +218,49 @@
               Than type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">terraform apply</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/terraform-init.png" />
+              <img src="../../images-folder/resume-website-images/terraform-apply.png" />
+            </li>
+            <li>
+              After running the terraform apply command, it might have a error for remote-exec.
+              Type terraform apply again.
+              <pre class="codebox"><code class="language-bash" id="sample-code">terraform apply</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+              <img src="../../images-folder/resume-website-images/terraform-apply-error.png" />
+              <img src="../../images-folder/resume-website-images/terraform-apply-error-2.png" />
+            </li>
+            <li>
+              Once the initialization is complete, you can will be able to see a kudeadm join command.
+              Take note of the kubeadm-join command and the ip addresses. 
+              For the example it would be:
+              <pre class="codebox"><code class="language-bash" id="sample-code">sudo kubeadm join [your-ip]:6443 --token [your-token] --discovery-token-ca-cert-hash [your-hash]</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+              <img src="../../images-folder/resume-website-images/kubeadm-join.png" />
+            </li>
+            <li>
+              Now that the infrastructure is built, you would need to SSH into the EC2 instance.
+              But before that we would need to change the permission of the key.pem file.
+              Navigate to where you have stored your key.pem file. for me it would be Resume-website > secrets
+              Type the following command:
+              <pre class="codebox"><code class="language-bash" id="sample-code">chmod 400 [your-key.pem]</code></pre>
+              <img src="../../images-folder/resume-website-images/chmod-400.png" />
+            </li>
+            <li>
+              Now that the infrastructure is built, you can access the server via SSH.
+              Navigate to where you have stored your key.pem file. for me it would be Resume-website > secrets
+              Currently we are trying to setup the Nginx kubernetes deployment on node01. so we would need to ssh into it.
+              Type the following command:
+              <pre class="codebox"><code class="language-bash" id="sample-code">ssh -i [your-key.pem] ec2-user@[your-ip]</code></pre>
+              <img src="../../images-folder/resume-website-images/ssh-node01.png" />
+            </li>
+            <li>
+              Using the previous kubeadm join command, we will now join the node01 to the kubernetes cluster.
+              Type the commands saved from the previous step
+              <img src="../../images-folder/resume-website-images/node01-kubeadm-join.png" />
+            </li>
+            <li>
+              Now that the node01 is joined to the kubernetes cluster, we can check the status of the nodes.
+              Firstly we need to SSH into the masternode.
+              <img src="../../images-folder/resume-website-images/node01-kubeadm-join.png" />
             </li>
           </ol>
         </div>
