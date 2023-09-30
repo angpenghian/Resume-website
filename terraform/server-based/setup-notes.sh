@@ -26,8 +26,8 @@
 # # On the worker node server, use the following format to execute the join command you copied in the previous step:
 # kubeadm join [your-ip]:6443 --token [your-token] --discovery-token-ca-cert-hash [your-hash]
 # # An example of how the join command should look is given below:
-sudo kubeadm join 10.0.25.38:6443 --token 0j9lzq.chnl08jrbhrwhbmx \
-        --discovery-token-ca-cert-hash sha256:616048195d19ae8d66e035db4f833ee4f94405fd52600a903ea89aacdd1af384
+sudo kubeadm join 10.0.26.132:6443 --token 2pfcl2.sm5dg7wxh8yqa077 \
+        --discovery-token-ca-cert-hash sha256:2fe28b3e048f7879dae9187105fe762f78b836e378932a5266512d60b0c1c764
 
 # # To start using your cluster, you need to run the following as a regular user:
 # mkdir -p $HOME/.kube

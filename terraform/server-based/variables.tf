@@ -28,6 +28,11 @@ variable "certificate_arn" {
   type        = string
 }
 
+variable "certificate_arn2" {
+  description = "The certificate arn"
+  type        = string
+}
+
 variable "create_jenkins_server_and_route53_rule" {
   description = "Whether to create the whole jenkins server stack change true to create and false to delete"
   default     = true

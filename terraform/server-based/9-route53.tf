@@ -10,8 +10,8 @@ resource "aws_route53_record" "angpenghian" {
   type    = "A"
 
   alias {
-    name                   = aws_lb.resume_alb.dns_name
-    zone_id                = aws_lb.resume_alb.zone_id
+    name                   = aws_cloudfront_distribution.resume_cloudfront.domain_name
+    zone_id                = aws_cloudfront_distribution.resume_cloudfront.hosted_zone_id
     evaluate_target_health = false
   }
 }

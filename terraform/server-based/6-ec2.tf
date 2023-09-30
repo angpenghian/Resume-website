@@ -6,7 +6,7 @@ resource "aws_eip_association" "masternote_eip_assoc" {
 }
 resource "aws_instance" "masternode_server" {
   ami                    = var.ami
-  instance_type          = "t2.micro"
+  instance_type          = var.instance_type
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.resume_sg.id]
   subnet_id              = aws_subnet.masternode_subnet.id
@@ -74,7 +74,7 @@ resource "aws_eip_association" "node01_server_eip_assoc" {
 }
 resource "aws_instance" "node01_server" {
   ami                    = var.ami
-  instance_type          = "t3.small"
+  instance_type          = var.instance_type
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.resume_sg.id]
   subnet_id              = aws_subnet.node01_subnet.id
@@ -114,7 +114,7 @@ resource "aws_instance" "jenkins_server" {
   count = var.create_jenkins_server_and_route53_rule ? 1 : 0
 
   ami                    = var.ami
-  instance_type          = "t3.small"
+  instance_type          = var.instance_type
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.resume_sg.id]
   subnet_id              = aws_subnet.jenkins_subnet.id

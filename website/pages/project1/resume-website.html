@@ -259,8 +259,58 @@
             </li>
             <li>
               Now that the node01 is joined to the kubernetes cluster, we can check the status of the nodes.
-              Firstly we need to SSH into the masternode.
-              <img src="../../images-folder/resume-website-images/node01-kubeadm-join.png" />
+              Firstly we need to SSH into the masternode and use the kubernetes command to check the status of the nodes.
+              Type the following commands:
+              <pre class="codebox"><code class="language-bash" id="sample-code">ssh -i [your-key.pem] ec2-user@[your-ip]</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+              <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get node</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+              <img src="../../images-folder/resume-website-images/ssh-masternode.png" />
+            </li>
+            <li>
+              We have established that node01 has joined the kubernetes cluster.
+              Now we can deploy the nginx deployment.
+              Firstly navigate to the nginx directory. For my example it would be /home/ec2-user/website/kubernetes-setup
+              <pre class="codebox"><code class="language-bash" id="sample-code">cd /home/ec2-user/website/kubernetes-setup</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+              <img src="../../images-folder/resume-website-images/kubernetes-setup-directory.png" />
+            </li>
+            <li>
+              You may ask how did this website folder get into the EC2 instance.
+              This is because we have used the terraform function called provisioner to copy the website folder into the EC2 instance.
+              Under the terraform directory (Resume-website > terraform > server-based) there is a terraform file called 6-ec2.tf
+              If need be you are able to change this according to your needs.
+              <img src="../../images-folder/resume-website-images/masternode-provisioner.png" />
+            </li>
+            <li>
+              Now that we understand how the website folder got into the EC2 instance, we can now deploy the nginx deployment.
+              Navigate to the kubernetes script directory. For my example it would be /home/ec2-user/website/kubernetes-setup
+              Type the following command:
+              <pre class="codebox"><code class="language-bash" id="sample-code">kubectl apply -f kubernetes-nginx-setup.yaml</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+              <img src="../../images-folder/resume-website-images/kubectl-apply-nginx.png" />
+            </li>
+            <li>
+              We have now successfully deployed the nginx deployment.
+              Now we can check the status of the deployment.
+              Type the following command:
+              <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get all</code></pre>
+              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+              <img src="../../images-folder/resume-website-images/kubectl-get-all-nginx.png" />
+            </li>
+            <li>
+              Check if the nginx deployment is working.
+              Open a browser and type in the url
+              <img src="../../images-folder/resume-website-images/website-after-nginx.png" />
+            </li>
+            <li>
+              You might wonder how is the url is decided. Other than buying your own domain on AWS.
+              In the terraform file 8-route53.tf, you can see that I have created a record set for the domain angpenghian.com
+              <img src="../../images-folder/resume-website-images/route53-a-record.png" />
+            </li>
+            <li>
+              We have now completed the deployment of the nginx deployment.
+              Part 2 of this project will be to deploy the jenkins deployment and setup the CI/CD pipeline.
             </li>
           </ol>
         </div>
