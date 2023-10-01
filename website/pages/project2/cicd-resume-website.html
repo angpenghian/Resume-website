@@ -32,9 +32,8 @@
       <div class="container">
         <div class="blog">
           <h1 class="sub-title">
-            Building a Resume Website on AWS.
-            Using Nginx, Terraform, Kubernetes,
-            Docker, Jenkins and Sonarqube.
+            Building a Resume Website on AWS EC2 Using Nginx,
+            Terraform,Kubernetes, and Docker
           </h1>
           <h2>PengHian Ang</h2>
           <h3>June 7, 2023</h3>
@@ -90,8 +89,8 @@
           <p>
             For this stage of the project <span style="color: #0050ef">(hightlighted in blue)</span>, I have chosen the following
             infrastructure setup. The image below illustrates the setup:
-            <img src="../../images-folder/resume-website-images/current-setup.png" alt="Infrastructure Image" />
           </p>
+          <img src="../../images-folder/resume-website-images/current-setup.png" alt="Infrastructure Image" />
           <ul>
             <li><span>Terraform: </span>For AWS resource creation.</li>
             <li>
@@ -116,55 +115,44 @@
               file reading on EC2 server. Service made public via NodePort.
             </li>
           </ul>
+
           <h4>instructions:</h4>
           <ol>
-            <li><strong>Choose a command terminal</strong>
-              <p>
-                Open a terminal (Command Prompt on Windows, Terminal on Mac or
-                Linux).
-              </p>
+            <li>
+              Open a terminal (Command Prompt on Windows, Terminal on Mac or
+              Linux).
             </li>
-            <br/>
-            <li><strong>Choose a base folder</strong>
-              <p>
+            <li>
               Navigate to the empty folder where you want to clone the
               repository. You can use the cd (change directory) command to do
               this. For example:
               <pre class="codebox"><code class="language-bash" id="code1">cd /path/to/your/folder</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              </p>
             </li>
-            <br/>
-            <li><strong>Clone the repository</strong>
-              <p>
+            <li>
               Once you're in the right directory, use the git clone command
               followed by the URL of the repository:
               <pre class="codebox"><code class="language-git" id="sample-code">git clone https://github.com/angpenghian/resume.git</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              </p>
             </li>
-            <br/>
-            <li><strong>Navigate to nessary folder</strong>
-              <p>
+            <li>
+              Press Enter and the repository will be cloned into your chosen
+              folder.
+            </li>
+            <li>
               After cloning the GitHub repository, use the subsequent command to
               navigate to the terraform directory that includes the necessary
               Terraform and Bash scripts for configuring the infrastructure.
-              <pre class="codebox"><code class="language-bash" id="sample-code">cd /Your Folder Directory/Resume-website/</code></pre>
+              <pre class="codebox"><code class="language-bash" id="sample-code">cd /Your Folder Directory/Terraform/infra/</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              </p>
             </li>
-            <br/>
-            <li><strong>Create secrets folder</strong>
-              <p>
-              First, create a new directory called 'secrets' manually or using the command
+            <li>
+              First, create a new directory called 'secrets' using the command
               below:
               <pre class="codebox"><code class="language-bash" id="sample-code">mkdir secrets</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              </p>
             </li>
-            <br/>
-            <li><strong>Configure and obtain AWS credentials</strong>
-              <p>
+            <li>
               Next, log into your AWS root user account. Use the console's
               search bar to find the IAM service.
               <img src="../../images-folder/resume-website-images/aws-iam-search.png" />
@@ -179,11 +167,8 @@
               <img src="../../images-folder/resume-website-images/aws-iam-key.png" />
               It's crucial to save and document both keys for future reference.
               <img src="../../images-folder/resume-website-images/aws-key.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Configure and obtain AWS key pairs</strong>
-              <p>
+            <li>
               Now, create a key pair to enable SSH access into the AWS EC2
               machines you'll be making. Use the console's search bar to find
               "Key pairs".
@@ -196,119 +181,84 @@
               Upon completion, the key pair will be generated and a .pem file
               will be downloaded.
               <img src="../../images-folder/resume-website-images/aws-createkey-finish.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Place secrets and key pair</strong>
-              <p>
+            <li>
               Afterward, save the access keys and key pairs in the given format
               within the 'secrets' directory.
               <img src="../../images-folder/resume-website-images/folder.png" />
-              </p>
             </li>
-            <li><strong>Setup Terraform</strong>
-              <p>
+            <li>
               Now that your security credentials are properly set up, there are
               still a few files you need to edit for the Terraform setup.
               <img src="../../images-folder/resume-website-images/aws-terraform-p1.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Configure terraform provider</strong>
-              <p>
+            <li>
               In the provider file, you can modify the access key location if
               you've stored it elsewhere.
               <img src="../../images-folder/resume-website-images/providertf.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Configure terraform variables</strong>
-              <p>
+            <li>
               For terraform.tfvars, you can modify parameters such as the EC2
               machine image, your instance type, private key path, the domain
               you're using, and a validated SSL certificate ARN from AWS Cert
               Manager.
               <img src="../../images-folder/resume-website-images/tfvars.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Initialize terraform</strong>
-              <p>
+            <li>
               Once you've finished editing the files, you can initialize the terraform directory.
               navigate to the terraform directory (Resume-website > terraform > server-based) that includes the necessary Terraform and Bash scripts for configuring the infrastructure.
               Than type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">terraform init</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
               <img src="../../images-folder/resume-website-images/terraform-init.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Terraform install start</strong>
-              <p>
+            <li>
               If you have cloned my repository, you would have the nessary terraform files to build the infrastructure.
               navigate to the server-based directory (Resume-website > terraform > server-based) that includes the necessary Terraform and Bash scripts for configuring the infrastructure.
               Than type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">terraform apply</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
               <img src="../../images-folder/resume-website-images/terraform-apply.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Terraform install error handling</strong>
-              <p>
+            <li>
               After running the terraform apply command, it might have a error for remote-exec.
               Type terraform apply again.
               <pre class="codebox"><code class="language-bash" id="sample-code">terraform apply</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
               <img src="../../images-folder/resume-website-images/terraform-apply-error.png" />
               <img src="../../images-folder/resume-website-images/terraform-apply-error-2.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Take note of kubeadm join command</strong>
-              <p>
+            <li>
               Once the initialization is complete, you can will be able to see a kudeadm join command.
               Take note of the kubeadm-join command and the ip addresses. 
               For the example it would be:
               <pre class="codebox"><code class="language-bash" id="sample-code">sudo kubeadm join [your-ip]:6443 --token [your-token] --discovery-token-ca-cert-hash [your-hash]</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
               <img src="../../images-folder/resume-website-images/kubeadm-join.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Change permission for secret key</strong>
-              <p>
+            <li>
               Now that the infrastructure is built, you would need to SSH into the EC2 instance.
               But before that we would need to change the permission of the key.pem file.
               Navigate to where you have stored your key.pem file. for me it would be Resume-website > secrets
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">chmod 400 [your-key.pem]</code></pre>
               <img src="../../images-folder/resume-website-images/chmod-400.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>SSH into node01</strong>
-              <p>
+            <li>
               Now that the infrastructure is built, you can access the server via SSH.
               Navigate to where you have stored your key.pem file. for me it would be Resume-website > secrets
               Currently we are trying to setup the Nginx kubernetes deployment on node01. so we would need to ssh into it.
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">ssh -i [your-key.pem] ec2-user@[your-ip]</code></pre>
               <img src="../../images-folder/resume-website-images/ssh-node01.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Node01 join kubernetes cluster</strong>
-              <p>
+            <li>
               Using the previous kubeadm join command, we will now join the node01 to the kubernetes cluster.
               Type the commands saved from the previous step
               <img src="../../images-folder/resume-website-images/node01-kubeadm-join.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Check node node01 status</strong>
-              <P>
-              Now that node01 is joined to the kubernetes cluster, we can check the status of the nodes.
+            <li>
+              Now that the node01 is joined to the kubernetes cluster, we can check the status of the nodes.
               Firstly we need to SSH into the masternode and use the kubernetes command to check the status of the nodes.
               Type the following commands:
               <pre class="codebox"><code class="language-bash" id="sample-code">ssh -i [your-key.pem] ec2-user@[your-ip]</code></pre>
@@ -316,149 +266,52 @@
               <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get node</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
               <img src="../../images-folder/resume-website-images/ssh-masternode.png" />
-              </P>
             </li>
-            <br/>
-            <li><strong>Navigate to kubernetes yaml file</strong>
-              <p>
+            <li>
               We have established that node01 has joined the kubernetes cluster.
               Now we can deploy the nginx deployment.
               Firstly navigate to the nginx directory. For my example it would be /home/ec2-user/website/kubernetes-setup
               <pre class="codebox"><code class="language-bash" id="sample-code">cd /home/ec2-user/website/kubernetes-setup</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
               <img src="../../images-folder/resume-website-images/kubernetes-setup-directory.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Why is there website folder in the server</strong>
-              <P>
+            <li>
               You may ask how did this website folder get into the EC2 instance.
               This is because we have used the terraform function called provisioner to copy the website folder into the EC2 instance.
               Under the terraform directory (Resume-website > terraform > server-based) there is a terraform file called 6-ec2.tf
               If need be you are able to change this according to your needs.
               <img src="../../images-folder/resume-website-images/masternode-provisioner.png" />
-              </P>
             </li>
-            <br/>
-            <li><strong>Create nginx deployment</strong>
-              <p>
+            <li>
               Now that we understand how the website folder got into the EC2 instance, we can now deploy the nginx deployment.
               Navigate to the kubernetes script directory. For my example it would be /home/ec2-user/website/kubernetes-setup
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">kubectl apply -f kubernetes-nginx-setup.yaml</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
               <img src="../../images-folder/resume-website-images/kubectl-apply-nginx.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Check nginx deployment status</strong>
-              <p>
+            <li>
               We have now successfully deployed the nginx deployment.
               Now we can check the status of the deployment.
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get all</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
               <img src="../../images-folder/resume-website-images/kubectl-get-all-nginx.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Check website</strong>
-              <p>
+            <li>
               Check if the nginx deployment is working.
               Open a browser and type in the url
               <img src="../../images-folder/resume-website-images/website-after-nginx.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Domain Name</strong>
-              <p>
+            <li>
               You might wonder how is the url is decided. Other than buying your own domain on AWS.
               In the terraform file 8-route53.tf, you can see that I have created a record set for the domain angpenghian.com
               <img src="../../images-folder/resume-website-images/route53-a-record.png" />
-              </p>
             </li>
-            <br/>
-            <li><strong>Complete</strong>
-              <p>
+            <li>
               We have now completed the deployment of the nginx deployment.
               Part 2 of this project will be to deploy the jenkins deployment and setup the CI/CD pipeline.
-              </p>
             </li>
-          </ol>
-          <br/>
-          <h1 class="sub-title">
-            Building CI/CD for the infrastructure setup.
-          </h1>
-          <p>
-            Now that we have completed the infrastructure setup for the nginx deployment, we can now setup the CI/CD pipeline for the infrastructure.
-            For this stage of the project <span style="color: #f26161">(hightlighted in red)</span>, I have chosen the following
-            infrastructure setup. The image below illustrates the setup:
-            <img src="../../images-folder/resume-website-images/current-setup.png" alt="Infrastructure Image" />
-          </p>
-          <h4>instructions:</h4>
-          <ol>
-            <li><strong>Choose a command terminal</strong>
-              <P>
-              Open a terminal (Command Prompt on Windows, Terminal on Mac or
-              Linux).
-              </P>
-            </li>
-            <br/>
-            <li><strong>SSH into Jenkins</strong>
-              <p>
-              If you have followed the steps from the previous stage, you would have the nessary terraform files to build the infrastructure.
-              Navigate to the secrets directory (Resume-website > secrets) and SSH into the jenkins EC2 instance.
-              Type the following command:
-              <pre class="codebox"><code class="language-bash" id="sample-code">ssh -i [your-key.pem] ec2-user@[your-ip]</code></pre>
-              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/ssh-jenkins.png" />
-              </p>
-            </li>
-            <br/>
-            <li><strong>Jenkins join kubernetes cluster</strong>
-              <P>
-              Now that we are inside the jenkins EC2 instance, we should join the jenkins EC2 instance to the kubernetes cluster.
-              Type the following command:
-              <pre class="codebox"><code class="language-bash" id="sample-code">sudo kubeadm join [your-ip]:6443 --token [your-token] --discovery-token-ca-cert-hash [your-hash]</code></pre>
-              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/jenkins-kubeadm-join.png" />
-              </P>
-            </li>
-            <br/>
-            <li><strong>Check node jenkins status</strong>
-              <P>
-                Now that jenkins is joined to the kubernetes cluster, we can check the status of the nodes.
-                Firstly we need to SSH into the masternode and use the kubernetes command to check the status of the nodes.
-                Type the following commands:
-                <pre class="codebox"><code class="language-bash" id="sample-code">ssh -i [your-key.pem] ec2-user@[your-ip]</code></pre>
-                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-                <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get node</code></pre>
-                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-                <img src="../../images-folder/resume-website-images/ssh-masternode2.png" />
-                </P>
-            </li>
-            <br/>
-            <li><strong>Navigate to kubernetes yaml file</strong>
-              <p>
-              We have established that jenkins has joined the kubernetes cluster.
-              Now we can deploy the jenkins deployment.
-              Firstly navigate to the nginx directory. For my example it would be /home/ec2-user/website/kubernetes-setup
-              <pre class="codebox"><code class="language-bash" id="sample-code">cd /home/ec2-user/website/kubernetes-setup</code></pre>
-              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/kubernetes-setup-directory.png" />
-              </p>
-            </li>
-            <br/>
-            <li><strong>Create jenkins deployment</strong>
-              <p>
-              Navigate to the kubernetes script directory. For my example it would be /home/ec2-user/website/kubernetes-setup
-              Type the following command:
-              <pre class="codebox"><code class="language-bash" id="sample-code">kubectl apply -f kubernetes-jenkins-setup.yaml</code></pre>
-              <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/kubectl-apply-jenkins.png" />
-              </p>
-            </li>
-            <br/>
           </ol>
         </div>
       </div>

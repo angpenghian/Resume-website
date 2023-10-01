@@ -1,0 +1,219 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #080808;
+  color: #fff;
+}
+.container {
+  padding: 10px 10%;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.logo {
+  width: 140px;
+}
+
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 20px;
+}
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+}
+nav ul li a::after {
+  content: "";
+  width: 0%;
+  height: 3px;
+  background: #ff004f;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+.header-text {
+  margin-top: 20%;
+  font-size: 30px;
+}
+.header-text h1 {
+  font-size: 60px;
+  margin-top: 20px;
+}
+.header-text h1 span {
+  color: #ff004f;
+}
+
+/*----------------------------------------content----------------------------------------*/
+.content {
+  font-family: 'Merriweather', 'Georgia', serif;
+  color: #fff;
+  background-color: #262626;
+  width: 60%;
+  margin: auto;
+  padding: 30px;
+}
+
+.content h1, h2, h3, h4 {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.content p, ol, ul, pre {
+  font-family: 'Merriweather', 'Georgia', serif;
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.blog img{
+  width: 100%;
+}
+
+.content h1,
+.content p {
+  margin: 0 0 15px 0;
+}
+.blog ol,
+.blog ul {
+  list-style-position: inside;
+  padding-left: 1em;
+  margin-left: -20px;
+}
+.blog h4 {
+  color: #ff004f;
+}
+.blog ul li span {
+  color: #ff004f;
+}
+.blog ol li span {
+  color: #ff004f;
+}
+
+
+code {
+  text-shadow: none !important;
+}
+.content pre.codebox {
+  background-color: #555; /* Your preferred color */
+  padding: 10px;
+}
+pre.codebox, pre.codebox code {
+  font-size: 14px;
+  color: #fff;
+}
+.copy-code-button {
+  padding: 5px 5px;
+  background-color: #ff004f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 5px;
+}
+.copy-code-button:hover {
+  background-color: #555;
+}
+
+/*----------------------------------------contact----------------------------------------*/
+.copyright {
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
+  background: #262626;
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+/*----------------------------------------css for small screens----------------------------------------*/
+nav .fa-solid {
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .blog h1 {
+    font-size: 30px;
+  }
+  nav .fa-solid {
+    display: block;
+    font-size: 25px;
+  }
+  nav ul {
+    background: #ff004f;
+    position: fixed;
+    top: 0;
+    right: -200px;
+    width: 200px;
+    height: 100vh;
+    padding-top: 50px;
+    z-index: 2;
+    transition: right 0.5s;
+  }
+  nav ul li {
+    display: block;
+    margin: 25px;
+  }
+  nav ul .fa-solid {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+  }
+  .sub-title {
+    font-size: 40px;
+  }
+  .blog {
+    font-size: 14px;
+  }
+  .copyright {
+    font-size: 14px;
+  }
+  .content {
+    width: 100%;
+  }
+}
+
+#msg {
+  color: #61b752;
+  margin-top: -40px;
+  display: block;
+}
+
+/*----------------------------------------to top button----------------------------------------*/
+#topBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #ff004f; /* Dark background */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#topBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
