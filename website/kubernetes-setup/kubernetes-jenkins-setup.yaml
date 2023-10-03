@@ -155,11 +155,16 @@ spec:
 # Jenkins will ask for the initial Admin password when you access the dashboard for the first time.
 # You can get that from the pod logs either from the Kubernetes dashboard or CLI. You can get the pod details using the following CLI command.
 # kubectl get pods --namespace=devops-tools
-# kubectl logs jenkins-bf6b8d5fb-pcz59 --namespace=devops-tools
+# kubectl logs jenkins-bf6b8d5fb-qqg99 --namespace=devops-tools
+
+# change password for master node and node01
+# ssh ec2-user@<masternode-public-ip>
+# ssh ec2-user@<node01-public-ip>
+# sudo passwd ec2-user
 
 # execute this inside the jenkins pod to ensure connectivity betweens jenkins pod and ur ngix-nodes
 # kubectl get pods --namespace=devops-tools
-# kubectl exec -it jenkins-bf6b8d5fb-pcz59 --namespace=devops-tools -- /bin/bash
+# kubectl exec -it jenkins-bf6b8d5fb-qqg99 --namespace=devops-tools -- /bin/bash
 # ssh-keygen
 # enter
 # enter
@@ -174,3 +179,6 @@ spec:
 # at the end of the jenkins pipeline, add the following to build step execute shell
 # scp -r /var/jenkins_home/workspace/resume-website/website/* ec2-user@<masternode-public-ip>:/home/ec2-user/website/
 # scp -r /var/jenkins_home/workspace/resume-website/website/* ec2-user@<node01-public-ip>:/home/ec2-user/website/
+
+# scp -r /var/jenkins_home/workspace/resume-website/website/* ec2-user@13.251.141.47:/home/ec2-user/website/
+# scp -r /var/jenkins_home/workspace/resume-website/website/* ec2-user@3.0.79.61:/home/ec2-user/website/

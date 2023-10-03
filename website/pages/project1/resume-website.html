@@ -459,6 +459,251 @@
               </p>
             </li>
             <br/>
+            <li><strong>Check jenkins website</strong>
+              <p>
+                Check if the jenkins deployment is working. Open a browser and type in the url
+              <img src="../../images-folder/resume-website-images/website-after-jenkins.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Domain Name</strong>
+              <p>
+              You might wonder how is the url is decided. Other than buying your own domain on AWS.
+              In the terraform file 8-route53.tf, you can see that I have created a record set for the domain jenkins.angpenghian.com
+              <img src="../../images-folder/resume-website-images/route53-a-record-jenkins.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>SSH masternode</strong>
+              <p>
+                Now that we have deployed the jenkins deployment, we need to unlock the jenkins website.
+                To do that we need to SSH into the masternode to get the initial admin password.
+              <img src="../../images-folder/resume-website-images/ssh-masternode3.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Get Jenkins pod name</strong>
+              <p>
+                First we need to get the initial admin password.
+                To do that we need to get the pod name of the jenkins deployment.
+                Type the following command:
+                <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get pods --namespace=devops-tools</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <img src="../../images-folder/resume-website-images/get-jenkins-pod-name.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>View Jenkins pod log</strong>
+              <p>
+                Now that we have the pod name, we can view the log of the jenkins pod.
+                Inside the log we can find the initial admin password.
+                Type the following command:
+                <pre class="codebox"><code class="language-bash" id="sample-code">kubectl logs [Jenkins-pod-name] --namespace=devops-tools</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <img src="../../images-folder/resume-website-images/jenkins-initial-admin-password.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Getting started jenkins</strong>
+              <p>
+                Now that we have the initial admin password, we can now unlock the jenkins website.
+                Enter the initial admin password and click continue.
+                <img src="../../images-folder/resume-website-images/unlock-jenkins.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Customize jenkins</strong>
+              <p>
+                Click on install suggested plugins and wait for the plugins to be installed.
+                <img src="../../images-folder/resume-website-images/jenkins-suggested-plugins.png" />
+                <img src="../../images-folder/resume-website-images/jenkins-suggested-plugins-installing.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Create first admin user</strong>
+              <p>
+                Create your first admin user.
+                Input your username, password, full name and email.
+                Save and continue.
+                <img src="../../images-folder/resume-website-images/jenkins-first-admin.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Instance configuration</strong>
+              <p>
+                Click on save and finish.
+                <img src="../../images-folder/resume-website-images/jenkins-instance-configuration.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>jenkins is ready</strong>
+              <p>
+                Click start using jenkins.
+                <img src="../../images-folder/resume-website-images/start-using-jenkins.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>New item</strong>
+              <p>
+                Click on new item, to create a new pipeline.
+                <img src="../../images-folder/resume-website-images/jenkins-new-item.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>New freestyle project</strong>
+              <p>
+                Input the name of the project and click freestyle project.
+                For my example I have named it resume-website.
+                After that click ok.
+                <img src="../../images-folder/resume-website-images/jenkins-freestyle-project.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Source code management</strong>
+              <p>
+                Click on source code management and select git.
+                Input the repository url.
+                For my example it would be:
+                <pre class="codebox"><code class="language-bash" id="sample-code">https://github.com/angpenghian/Resume-website</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <br/>
+                and select the branch you want to build, for my example it would be main.
+                <img src="../../images-folder/resume-website-images/jenkins-source-code-management.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Build triggers</strong>
+              <p>
+                Click on build triggers and select GitHub hook trigger for GITScm polling.
+                Click save.
+                <img src="../../images-folder/resume-website-images/jenkins-build-triggers.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>GitHub settings</strong>
+              <p>
+                Now we need to setup the GitHub settings.
+                Click on the GitHub settings tab.
+                <img src="../../images-folder/resume-website-images/github-settings.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>GitHub webhooks</strong>
+              <p>
+                Click on the GitHub webhooks tab.
+                <img src="../../images-folder/resume-website-images/github-webhooks.png" />
+                <br/>
+                Click on add webhook.
+                <img src="../../images-folder/resume-website-images/github-add-webhooks.png" />
+                <br/>
+                Enter the payload url, for my example it would be:
+                http://jenkins.angpenghian.com:32000/github-webhook/
+                <img src="../../images-folder/resume-website-images/github-payload-url.png" />
+                <br/>
+                Under which events would you like to trigger this webhook? select let me select individual events.
+                <img src="../../images-folder/resume-website-images/github-select-event.png" />
+                <br/>
+                Under the individual events, select push and pull request.
+                <img src="../../images-folder/resume-website-images/github-select-push-pull-request.png" />
+                <br/>
+                Once done click on add webhook.
+              </p>
+            </li>
+            <br/>
+            <li><strong>Jenkins test</strong>
+              <p>
+                Go back to jenkins and click on build now.
+                <img src="../../images-folder/resume-website-images/jenkins-build-now.png" />
+                <br/>
+                You should see the build successful if you have followed the steps correctly.
+                <img src="../../images-folder/resume-website-images/jenkins-build-now-successful.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Jenkins last build steps</strong>
+              <p>
+                Click on configure, select the build steps and Add build step.
+                Enter the following commands into the execute shell:
+                <pre class="codebox"><code class="language-bash" id="sample-code">scp -r /var/jenkins_home/workspace/resume-website/website/* ec2-user@<masternode-public-ip>:/home/ec2-user/website/</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <img src="../../images-folder/resume-website-images/jenkins-configure.png" />
+                <img src="../../images-folder/resume-website-images/jenkins-build-steps.png" />
+                <img src="../../images-folder/resume-website-images/jenkins-execute-shell.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Change ec2-user password for masternode and node01</strong>
+              <p>
+                Following the previous steps first SSH into the masternode and node01.
+                Once you are in the masternode and node01, type the following command:
+                <pre class="codebox"><code class="language-bash" id="sample-code">sudo passwd ec2-user</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <br/>
+                Enter the new password and confirm the new password.
+                <img src="../../images-folder/resume-website-images/passwd-masternode.png" />
+                <img src="../../images-folder/resume-website-images/passwd-node01.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Get jenkins pod name</strong>
+              <p>
+                Now we need to create a secret for the jenkins pods to access the nginx deployment.
+                First SSH into the masternode and type the following command:
+                <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get pods --namespace=devops-tools</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <img src="../../images-folder/resume-website-images/get-jenkins-pod-name.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>SSH into jenkins pod</strong>
+              <p>
+                Copy the jenkins pod name and SSH into the jenkins pod.
+                Type the following command:
+                <pre class="codebox"><code class="language-bash" id="sample-code">kubectl exec -it [jenkins-pod-name] --namespace=devops-tools -- /bin/bash</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <img src="../../images-folder/resume-website-images/jenkins-exec-pod.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Keygen for jenkins pod</strong>
+              <p>
+                Now that we are inside the jenkins pod, we need to create a secret.
+                Type the following command:
+                <pre class="codebox"><code class="language-bash" id="sample-code">ssh-keygen</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <br/>
+                When prompted for the file in which to save the key, press Enter. This accepts the default file location.
+                When prompted, enter a passphrase for the key. You can also leave the passphrase blank.
+                <img src="../../images-folder/resume-website-images/jenkins-ssh-keygen.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Copy ssh-copy-id for jenkins pod</strong>
+              <p>
+                Now we need to copy the public key to the jenkins pod.
+                Type the following command:
+                <pre class="codebox"><code class="language-bash" id="sample-code">ssh-copy-id ec2-user@masternode-public-ip</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <br/>
+                Enter the password for the ec2-user.
+                Do the same for other nginx nodes.
+                <img src="../../images-folder/resume-website-images/jenkins-ssh-copy-id.png" />
+              </p>
+            </li>
+            <br/>
+            <li><strong>Testing cicd function</strong>
+              <p>
+                Now we need to copy the public key to the jenkins pod.
+                Type the following command:
+                <pre class="codebox"><code class="language-bash" id="sample-code">ssh-copy-id ec2-user@masternode-public-ip</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <br/>
+                Enter the password for the ec2-user.
+                Do the same for other nginx nodes.
+                <img src="../../images-folder/resume-website-images/jenkins-ssh-copy-id.png" />
+              </p>
+            </li>
+            <br/>
           </ol>
         </div>
       </div>
