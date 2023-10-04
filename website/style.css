@@ -405,6 +405,7 @@ nav .fa-solid {
     padding-top: 50px;
     z-index: 2;
     transition: right 0.5s;
+    -webkit-transition: right 0.5s;
   }
   nav ul li {
     display: block;
