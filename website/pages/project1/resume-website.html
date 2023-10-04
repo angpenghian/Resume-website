@@ -14,7 +14,7 @@
     <div id="header">
       <div class="container">
         <nav>
-          <img src="../../images-folder/resume-website-images/logo.png" class="logo" />
+          <img src="../../images-folder/project1/logo.png" class="logo" />
           <ul id="sidemenu">
             <li><a href="../../index.html#header">Home</a></li>
             <li><a href="../../index.html#about">About</a></li>
@@ -90,7 +90,7 @@
           <p>
             For this stage of the project <span style="color: #0050ef">(hightlighted in blue)</span>, I have chosen the following
             infrastructure setup. The image below illustrates the setup:
-            <img src="../../images-folder/resume-website-images/current-setup.png" alt="Infrastructure Image" />
+            <img src="../../images-folder/project1/current-setup.png" alt="Infrastructure Image" />
           </p>
           <ul>
             <li><span>Terraform: </span>For AWS resource creation.</li>
@@ -167,18 +167,18 @@
               <p>
               Next, log into your AWS root user account. Use the console's
               search bar to find the IAM service.
-              <img src="../../images-folder/resume-website-images/aws-iam-search.png" />
+              <img src="../../images-folder/project1/aws-iam-search.png" />
               Inside the IAM interface, navigate to the Users section and choose
               'Add users'.
-              <img src="../../images-folder/resume-website-images/aws-iam-users.png" />
+              <img src="../../images-folder/project1/aws-iam-users.png" />
               Follow the on-screen instructions to create your IAM user.
-              <img src="../../images-folder/resume-website-images/aws-iam-testing.png" />
+              <img src="../../images-folder/project1/aws-iam-testing.png" />
               Once the user is created, click on it. In the 'Security
               credentials' tab, find 'Create access key'.
-              <img src="../../images-folder/resume-website-images/aws-iam-user-testing.png" />
-              <img src="../../images-folder/resume-website-images/aws-iam-key.png" />
+              <img src="../../images-folder/project1/aws-iam-user-testing.png" />
+              <img src="../../images-folder/project1/aws-iam-key.png" />
               It's crucial to save and document both keys for future reference.
-              <img src="../../images-folder/resume-website-images/aws-key.png" />
+              <img src="../../images-folder/project1/aws-key.png" />
               </p>
             </li>
             <br/>
@@ -187,15 +187,15 @@
               Now, create a key pair to enable SSH access into the AWS EC2
               machines you'll be making. Use the console's search bar to find
               "Key pairs".
-              <img src="../../images-folder/resume-website-images/aws-keypairs-search.png" />
+              <img src="../../images-folder/project1/aws-keypairs-search.png" />
               In the Key pairs section, select Create key pair. Take note of the
               region you're in because key pairs are region-specific.
-              <img src="../../images-folder/resume-website-images/aws-keypairs-create.png" />
+              <img src="../../images-folder/project1/aws-keypairs-create.png" />
               After selecting "Create key pair", input your preferred key name.
-              <img src="../../images-folder/resume-website-images/aws-createkey.png" />
+              <img src="../../images-folder/project1/aws-createkey.png" />
               Upon completion, the key pair will be generated and a .pem file
               will be downloaded.
-              <img src="../../images-folder/resume-website-images/aws-createkey-finish.png" />
+              <img src="../../images-folder/project1/aws-createkey-finish.png" />
               </p>
             </li>
             <br/>
@@ -203,14 +203,14 @@
               <p>
               Afterward, save the access keys and key pairs in the given format
               within the 'secrets' directory.
-              <img src="../../images-folder/resume-website-images/folder.png" />
+              <img src="../../images-folder/project1/folder.png" />
               </p>
             </li>
             <li><strong>Setup Terraform</strong>
               <p>
               Now that your security credentials are properly set up, there are
               still a few files you need to edit for the Terraform setup.
-              <img src="../../images-folder/resume-website-images/aws-terraform-p1.png" />
+              <img src="../../images-folder/project1/aws-terraform-p1.png" />
               </p>
             </li>
             <br/>
@@ -218,7 +218,7 @@
               <p>
               In the provider file, you can modify the access key location if
               you've stored it elsewhere.
-              <img src="../../images-folder/resume-website-images/providertf.png" />
+              <img src="../../images-folder/project1/providertf.png" />
               </p>
             </li>
             <br/>
@@ -228,7 +228,7 @@
               machine image, your instance type, private key path, the domain
               you're using, and a validated SSL certificate ARN from AWS Cert
               Manager.
-              <img src="../../images-folder/resume-website-images/tfvars.png" />
+              <img src="../../images-folder/project1/tfvars.png" />
               </p>
             </li>
             <br/>
@@ -239,7 +239,7 @@
               Than type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">terraform init</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/terraform-init.png" />
+              <img src="../../images-folder/project1/terraform-init.png" />
               </p>
             </li>
             <br/>
@@ -250,7 +250,7 @@
               Than type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">terraform apply</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/terraform-apply.png" />
+              <img src="../../images-folder/project1/terraform-apply.png" />
               </p>
             </li>
             <br/>
@@ -260,8 +260,8 @@
               Type terraform apply again.
               <pre class="codebox"><code class="language-bash" id="sample-code">terraform apply</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/terraform-apply-error.png" />
-              <img src="../../images-folder/resume-website-images/terraform-apply-error-2.png" />
+              <img src="../../images-folder/project1/terraform-apply-error.png" />
+              <img src="../../images-folder/project1/terraform-apply-error-2.png" />
               </p>
             </li>
             <br/>
@@ -272,7 +272,7 @@
               For the example it would be:
               <pre class="codebox"><code class="language-bash" id="sample-code">sudo kubeadm join [your-ip]:6443 --token [your-token] --discovery-token-ca-cert-hash [your-hash]</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/kubeadm-join.png" />
+              <img src="../../images-folder/project1/kubeadm-join.png" />
               </p>
             </li>
             <br/>
@@ -283,7 +283,7 @@
               Navigate to where you have stored your key.pem file. for me it would be Resume-website > secrets
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">chmod 400 [your-key.pem]</code></pre>
-              <img src="../../images-folder/resume-website-images/chmod-400.png" />
+              <img src="../../images-folder/project1/chmod-400.png" />
               </p>
             </li>
             <br/>
@@ -294,7 +294,7 @@
               Currently we are trying to setup the Nginx kubernetes deployment on node01. so we would need to ssh into it.
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">ssh -i [your-key.pem] ec2-user@[your-ip]</code></pre>
-              <img src="../../images-folder/resume-website-images/ssh-node01.png" />
+              <img src="../../images-folder/project1/ssh-node01.png" />
               </p>
             </li>
             <br/>
@@ -302,7 +302,7 @@
               <p>
               Using the previous kubeadm join command, we will now join the node01 to the kubernetes cluster.
               Type the commands saved from the previous step
-              <img src="../../images-folder/resume-website-images/node01-kubeadm-join.png" />
+              <img src="../../images-folder/project1/node01-kubeadm-join.png" />
               </p>
             </li>
             <br/>
@@ -315,7 +315,7 @@
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
               <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get node</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/ssh-masternode.png" />
+              <img src="../../images-folder/project1/ssh-masternode.png" />
               </P>
             </li>
             <br/>
@@ -326,7 +326,7 @@
               Firstly navigate to the nginx directory. For my example it would be /home/ec2-user/website/kubernetes-setup
               <pre class="codebox"><code class="language-bash" id="sample-code">cd /home/ec2-user/website/kubernetes-setup</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/kubernetes-setup-directory.png" />
+              <img src="../../images-folder/project1/kubernetes-setup-directory.png" />
               </p>
             </li>
             <br/>
@@ -336,7 +336,7 @@
               This is because we have used the terraform function called provisioner to copy the website folder into the EC2 instance.
               Under the terraform directory (Resume-website > terraform > server-based) there is a terraform file called 6-ec2.tf
               If need be you are able to change this according to your needs.
-              <img src="../../images-folder/resume-website-images/masternode-provisioner.png" />
+              <img src="../../images-folder/project1/masternode-provisioner.png" />
               </P>
             </li>
             <br/>
@@ -347,7 +347,7 @@
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">kubectl apply -f kubernetes-nginx-setup.yaml</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/kubectl-apply-nginx.png" />
+              <img src="../../images-folder/project1/kubectl-apply-nginx.png" />
               </p>
             </li>
             <br/>
@@ -358,7 +358,7 @@
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get all</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/kubectl-get-all-nginx.png" />
+              <img src="../../images-folder/project1/kubectl-get-all-nginx.png" />
               </p>
             </li>
             <br/>
@@ -366,7 +366,7 @@
               <p>
               Check if the nginx deployment is working.
               Open a browser and type in the url
-              <img src="../../images-folder/resume-website-images/website-after-nginx.png" />
+              <img src="../../images-folder/project1/website-after-nginx.png" />
               </p>
             </li>
             <br/>
@@ -374,7 +374,7 @@
               <p>
               You might wonder how is the url is decided. Other than buying your own domain on AWS.
               In the terraform file 8-route53.tf, you can see that I have created a record set for the domain angpenghian.com
-              <img src="../../images-folder/resume-website-images/route53-a-record.png" />
+              <img src="../../images-folder/project1/route53-a-record.png" />
               </p>
             </li>
             <br/>
@@ -393,7 +393,7 @@
             Now that we have completed the infrastructure setup for the nginx deployment, we can now setup the CI/CD pipeline for the infrastructure.
             For this stage of the project <span style="color: #f26161">(hightlighted in red)</span>, I have chosen the following
             infrastructure setup. The image below illustrates the setup:
-            <img src="../../images-folder/resume-website-images/current-setup.png" alt="Infrastructure Image" />
+            <img src="../../images-folder/project1/current-setup.png" alt="Infrastructure Image" />
           </p>
           <h4>instructions:</h4>
           <ol>
@@ -411,7 +411,7 @@
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">ssh -i [your-key.pem] ec2-user@[your-ip]</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/ssh-jenkins.png" />
+              <img src="../../images-folder/project1/ssh-jenkins.png" />
               </p>
             </li>
             <br/>
@@ -421,7 +421,7 @@
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">sudo kubeadm join [your-ip]:6443 --token [your-token] --discovery-token-ca-cert-hash [your-hash]</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/jenkins-kubeadm-join.png" />
+              <img src="../../images-folder/project1/jenkins-kubeadm-join.png" />
               </P>
             </li>
             <br/>
@@ -434,7 +434,7 @@
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
                 <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get node</code></pre>
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-                <img src="../../images-folder/resume-website-images/ssh-masternode2.png" />
+                <img src="../../images-folder/project1/ssh-masternode2.png" />
                 </P>
             </li>
             <br/>
@@ -445,7 +445,7 @@
               Firstly navigate to the nginx directory. For my example it would be /home/ec2-user/website/kubernetes-setup
               <pre class="codebox"><code class="language-bash" id="sample-code">cd /home/ec2-user/website/kubernetes-setup</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/kubernetes-setup-directory.png" />
+              <img src="../../images-folder/project1/kubernetes-setup-directory.png" />
               </p>
             </li>
             <br/>
@@ -455,14 +455,14 @@
               Type the following command:
               <pre class="codebox"><code class="language-bash" id="sample-code">kubectl apply -f kubernetes-jenkins-setup.yaml</code></pre>
               <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-              <img src="../../images-folder/resume-website-images/kubectl-apply-jenkins.png" />
+              <img src="../../images-folder/project1/kubectl-apply-jenkins.png" />
               </p>
             </li>
             <br/>
             <li><strong>Check jenkins website</strong>
               <p>
                 Check if the jenkins deployment is working. Open a browser and type in the url
-              <img src="../../images-folder/resume-website-images/website-after-jenkins.png" />
+              <img src="../../images-folder/project1/website-after-jenkins.png" />
               </p>
             </li>
             <br/>
@@ -470,7 +470,7 @@
               <p>
               You might wonder how is the url is decided. Other than buying your own domain on AWS.
               In the terraform file 8-route53.tf, you can see that I have created a record set for the domain jenkins.angpenghian.com
-              <img src="../../images-folder/resume-website-images/route53-a-record-jenkins.png" />
+              <img src="../../images-folder/project1/route53-a-record-jenkins.png" />
               </p>
             </li>
             <br/>
@@ -478,7 +478,7 @@
               <p>
                 Now that we have deployed the jenkins deployment, we need to unlock the jenkins website.
                 To do that we need to SSH into the masternode to get the initial admin password.
-              <img src="../../images-folder/resume-website-images/ssh-masternode3.png" />
+              <img src="../../images-folder/project1/ssh-masternode3.png" />
               </p>
             </li>
             <br/>
@@ -489,7 +489,7 @@
                 Type the following command:
                 <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get pods --namespace=devops-tools</code></pre>
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-                <img src="../../images-folder/resume-website-images/get-jenkins-pod-name.png" />
+                <img src="../../images-folder/project1/get-jenkins-pod-name.png" />
               </p>
             </li>
             <br/>
@@ -500,7 +500,7 @@
                 Type the following command:
                 <pre class="codebox"><code class="language-bash" id="sample-code">kubectl logs [Jenkins-pod-name] --namespace=devops-tools</code></pre>
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-                <img src="../../images-folder/resume-website-images/jenkins-initial-admin-password.png" />
+                <img src="../../images-folder/project1/jenkins-initial-admin-password.png" />
               </p>
             </li>
             <br/>
@@ -508,15 +508,15 @@
               <p>
                 Now that we have the initial admin password, we can now unlock the jenkins website.
                 Enter the initial admin password and click continue.
-                <img src="../../images-folder/resume-website-images/unlock-jenkins.png" />
+                <img src="../../images-folder/project1/unlock-jenkins.png" />
               </p>
             </li>
             <br/>
             <li><strong>Customize jenkins</strong>
               <p>
                 Click on install suggested plugins and wait for the plugins to be installed.
-                <img src="../../images-folder/resume-website-images/jenkins-suggested-plugins.png" />
-                <img src="../../images-folder/resume-website-images/jenkins-suggested-plugins-installing.png" />
+                <img src="../../images-folder/project1/jenkins-suggested-plugins.png" />
+                <img src="../../images-folder/project1/jenkins-suggested-plugins-installing.png" />
               </p>
             </li>
             <br/>
@@ -525,28 +525,28 @@
                 Create your first admin user.
                 Input your username, password, full name and email.
                 Save and continue.
-                <img src="../../images-folder/resume-website-images/jenkins-first-admin.png" />
+                <img src="../../images-folder/project1/jenkins-first-admin.png" />
               </p>
             </li>
             <br/>
             <li><strong>Instance configuration</strong>
               <p>
                 Click on save and finish.
-                <img src="../../images-folder/resume-website-images/jenkins-instance-configuration.png" />
+                <img src="../../images-folder/project1/jenkins-instance-configuration.png" />
               </p>
             </li>
             <br/>
             <li><strong>jenkins is ready</strong>
               <p>
                 Click start using jenkins.
-                <img src="../../images-folder/resume-website-images/start-using-jenkins.png" />
+                <img src="../../images-folder/project1/start-using-jenkins.png" />
               </p>
             </li>
             <br/>
             <li><strong>New item</strong>
               <p>
                 Click on new item, to create a new pipeline.
-                <img src="../../images-folder/resume-website-images/jenkins-new-item.png" />
+                <img src="../../images-folder/project1/jenkins-new-item.png" />
               </p>
             </li>
             <br/>
@@ -555,7 +555,7 @@
                 Input the name of the project and click freestyle project.
                 For my example I have named it resume-website.
                 After that click ok.
-                <img src="../../images-folder/resume-website-images/jenkins-freestyle-project.png" />
+                <img src="../../images-folder/project1/jenkins-freestyle-project.png" />
               </p>
             </li>
             <br/>
@@ -568,7 +568,7 @@
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
                 <br/>
                 and select the branch you want to build, for my example it would be main.
-                <img src="../../images-folder/resume-website-images/jenkins-source-code-management.png" />
+                <img src="../../images-folder/project1/jenkins-source-code-management.png" />
               </p>
             </li>
             <br/>
@@ -576,7 +576,7 @@
               <p>
                 Click on build triggers and select GitHub hook trigger for GITScm polling.
                 Click save.
-                <img src="../../images-folder/resume-website-images/jenkins-build-triggers.png" />
+                <img src="../../images-folder/project1/jenkins-build-triggers.png" />
               </p>
             </li>
             <br/>
@@ -584,27 +584,27 @@
               <p>
                 Now we need to setup the GitHub settings.
                 Click on the GitHub settings tab.
-                <img src="../../images-folder/resume-website-images/github-settings.png" />
+                <img src="../../images-folder/project1/github-settings.png" />
               </p>
             </li>
             <br/>
             <li><strong>GitHub webhooks</strong>
               <p>
                 Click on the GitHub webhooks tab.
-                <img src="../../images-folder/resume-website-images/github-webhooks.png" />
+                <img src="../../images-folder/project1/github-webhooks.png" />
                 <br/>
                 Click on add webhook.
-                <img src="../../images-folder/resume-website-images/github-add-webhooks.png" />
+                <img src="../../images-folder/project1/github-add-webhooks.png" />
                 <br/>
                 Enter the payload url, for my example it would be:
                 http://jenkins.angpenghian.com:32000/github-webhook/
-                <img src="../../images-folder/resume-website-images/github-payload-url.png" />
+                <img src="../../images-folder/project1/github-payload-url.png" />
                 <br/>
                 Under which events would you like to trigger this webhook? select let me select individual events.
-                <img src="../../images-folder/resume-website-images/github-select-event.png" />
+                <img src="../../images-folder/project1/github-select-event.png" />
                 <br/>
                 Under the individual events, select push and pull request.
-                <img src="../../images-folder/resume-website-images/github-select-push-pull-request.png" />
+                <img src="../../images-folder/project1/github-select-push-pull-request.png" />
                 <br/>
                 Once done click on add webhook.
               </p>
@@ -613,10 +613,10 @@
             <li><strong>Jenkins test</strong>
               <p>
                 Go back to jenkins and click on build now.
-                <img src="../../images-folder/resume-website-images/jenkins-build-now.png" />
+                <img src="../../images-folder/project1/jenkins-build-now.png" />
                 <br/>
                 You should see the build successful if you have followed the steps correctly.
-                <img src="../../images-folder/resume-website-images/jenkins-build-now-successful.png" />
+                <img src="../../images-folder/project1/jenkins-build-now-successful.png" />
               </p>
             </li>
             <br/>
@@ -626,9 +626,9 @@
                 Enter the following commands into the execute shell:
                 <pre class="codebox"><code class="language-bash" id="sample-code">scp -r /var/jenkins_home/workspace/resume-website/website/* ec2-user@<masternode-public-ip>:/home/ec2-user/website/</code></pre>
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-                <img src="../../images-folder/resume-website-images/jenkins-configure.png" />
-                <img src="../../images-folder/resume-website-images/jenkins-build-steps.png" />
-                <img src="../../images-folder/resume-website-images/jenkins-execute-shell.png" />
+                <img src="../../images-folder/project1/jenkins-configure.png" />
+                <img src="../../images-folder/project1/jenkins-build-steps.png" />
+                <img src="../../images-folder/project1/jenkins-execute-shell.png" />
               </p>
             </li>
             <br/>
@@ -640,8 +640,8 @@
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
                 <br/>
                 Enter the new password and confirm the new password.
-                <img src="../../images-folder/resume-website-images/passwd-masternode.png" />
-                <img src="../../images-folder/resume-website-images/passwd-node01.png" />
+                <img src="../../images-folder/project1/passwd-masternode.png" />
+                <img src="../../images-folder/project1/passwd-node01.png" />
               </p>
             </li>
             <br/>
@@ -651,7 +651,7 @@
                 First SSH into the masternode and type the following command:
                 <pre class="codebox"><code class="language-bash" id="sample-code">kubectl get pods --namespace=devops-tools</code></pre>
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-                <img src="../../images-folder/resume-website-images/get-jenkins-pod-name.png" />
+                <img src="../../images-folder/project1/get-jenkins-pod-name.png" />
               </p>
             </li>
             <br/>
@@ -661,7 +661,7 @@
                 Type the following command:
                 <pre class="codebox"><code class="language-bash" id="sample-code">kubectl exec -it [jenkins-pod-name] --namespace=devops-tools -- /bin/bash</code></pre>
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-                <img src="../../images-folder/resume-website-images/jenkins-exec-pod.png" />
+                <img src="../../images-folder/project1/jenkins-exec-pod.png" />
               </p>
             </li>
             <br/>
@@ -674,7 +674,7 @@
                 <br/>
                 When prompted for the file in which to save the key, press Enter. This accepts the default file location.
                 When prompted, enter a passphrase for the key. You can also leave the passphrase blank.
-                <img src="../../images-folder/resume-website-images/jenkins-ssh-keygen.png" />
+                <img src="../../images-folder/project1/jenkins-ssh-keygen.png" />
               </p>
             </li>
             <br/>
@@ -687,7 +687,7 @@
                 <br/>
                 Enter the password for the ec2-user.
                 Do the same for other nginx nodes.
-                <img src="../../images-folder/resume-website-images/jenkins-ssh-copy-id.png" />
+                <img src="../../images-folder/project1/jenkins-ssh-copy-id.png" />
               </p>
             </li>
             <br/>
@@ -695,10 +695,10 @@
               <p>
                 Now that we have setup the CI/CD pipeline, we can test it.
                 As you can see from the image below, as im writing this the live website is still on the old version.
-                <img src="../../images-folder/resume-website-images/old-website.png" />
+                <img src="../../images-folder/project1/old-website.png" />
                 <br/>
                 Now we can make a change to the website and push it to the github repository.
-                <img src="../../images-folder/resume-website-images/html-changes.png" />
+                <img src="../../images-folder/project1/html-changes.png" />
                 <br/>
                 Type the following commands to push the changes to the github repository:
                 <pre class="codebox"><code class="language-bash" id="sample-code">git add .</code></pre>
@@ -707,14 +707,14 @@
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
                 <pre class="codebox"><code class="language-bash" id="sample-code">git push</code></pre>
                 <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
-                <img src="../../images-folder/resume-website-images/git-push.png" />
+                <img src="../../images-folder/project1/git-push.png" />
                 <br/>
                 Now we can check the jenkins website to see if the build is successful.
-                <img src="../../images-folder/resume-website-images/jenkins-pending.png" />
-                <img src="../../images-folder/resume-website-images/jenkins-done.png" />
+                <img src="../../images-folder/project1/jenkins-pending.png" />
+                <img src="../../images-folder/project1/jenkins-done.png" />
                 <br/>
                 Completed, our CI/CD pipeline is working.
-                <img src="../../images-folder/resume-website-images/new-website.png" />
+                <img src="../../images-folder/project1/new-website.png" />
               </p>
             </li>
             <br/>
