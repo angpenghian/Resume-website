@@ -691,16 +691,22 @@
               </p>
             </li>
             <br/>
-            <li><strong>Testing cicd function</strong>
+            <li><strong>Testing CI/CD function</strong>
               <p>
-                Now we need to copy the public key to the jenkins pod.
-                Type the following command:
-                <pre class="codebox"><code class="language-bash" id="sample-code">ssh-copy-id ec2-user@masternode-public-ip</code></pre>
-                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                Now that we have setup the CI/CD pipeline, we can test it.
+                As you can see from the image below, as im writing this the live website is still on the old version.
+                <img src="../../images-folder/resume-website-images/old-website.png" />
                 <br/>
-                Enter the password for the ec2-user.
-                Do the same for other nginx nodes.
-                <img src="../../images-folder/resume-website-images/jenkins-ssh-copy-id.png" />
+                Now we can make a change to the website and push it to the github repository.
+                <img src="../../images-folder/resume-website-images/html-changes.png" />
+                <br/>
+                Type the following commands to push the changes to the github repository:
+                <pre class="codebox"><code class="language-bash" id="sample-code">git add .</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <pre class="codebox"><code class="language-bash" id="sample-code">git commit -m 'update'</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
+                <pre class="codebox"><code class="language-bash" id="sample-code">git push</code></pre>
+                <button class="copy-code-button" onclick="copyCodeToClipboard(this)"><i class="fa-regular fa-clipboard"></i> Copy Code</button>
               </p>
             </li>
             <br/>
