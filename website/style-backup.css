@@ -380,72 +380,72 @@ form .btn2 {
 nav .fa-solid {
   display: none;
 }
-@media only screen and (max-width: 37.5rem) { /* 600px/16 */
+@media only screen and (max-width: 600px) {
   #header {
     background-image: url(images-folder/index-images/phone_background.jpeg);
   }
   .header-text {
     margin-top: 100%;
-    font-size: 1rem;
+    font-size: 16px;
   }
   .header-text h1 {
-    font-size: 1.875rem;
+    font-size: 30px;
   }
   nav .fa-solid {
     display: block;
-    font-size: 1.563rem;
+    font-size: 25px;
   }
   nav ul {
     background: #ff004f;
     position: fixed;
     top: 0;
-    right: -12.5rem; /* 200px/16 */
-    width: 12.5rem; /* 200px/16 */
+    right: -200px;
+    width: 200px;
     height: 100vh;
-    padding-top: 3.125rem;
+    padding-top: 50px;
     z-index: 2;
     transition: right 0.5s;
     -webkit-transition: right 0.5s;
   }
   nav ul li {
     display: block;
-    margin: 1.563rem;
+    margin: 25px;
   }
   nav ul .fa-solid {
     position: absolute;
-    top: 1.563rem;
-    left: 1.563rem;
+    top: 25px;
+    left: 25px;
     cursor: pointer;
   }
   .sub-title {
-    font-size: 2.5rem;
+    font-size: 40px;
   }
   .about-col-1,
   .about-col-2 {
     flex-basis: 100%;
   }
   .about-col-1 {
-    margin-bottom: 1.875rem;
+    margin-bottom: 30px;
   }
   .about-col-2 {
-    font-size: 0.875rem;
+    font-size: 14px;
   }
   .tab-links {
-    font-size: 1rem;
-    margin-right: 1.25rem;
+    font-size: 16px;
+    margin-right: 20px;
   }
   .contact-left,
   .contact-right {
     flex-basis: 100%;
   }
   .copyright {
-    font-size: 0.875rem;
+    font-size: 14px;
   }
 }
 
 #msg {
   color: #61b752;
-  margin-top: -2.5rem;
+  margin-top: -40px;
   display: block;
 }
 
