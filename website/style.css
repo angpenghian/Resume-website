@@ -378,7 +378,7 @@ form .btn2 {
 
 /*----------------------------------------css for small screens----------------------------------------*/
 nav .fa-solid {
-  display: none;
+  display: block;
 }
 @media only screen and (max-width: 37.5rem) { /* 600px/16 */
   #header {
