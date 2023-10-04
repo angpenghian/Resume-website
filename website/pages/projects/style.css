@@ -18,7 +18,6 @@ body {
   padding: 10px 10%;
 }
 
-/* Header Styles */
 nav {
   display: flex;
   align-items: center;
@@ -58,7 +57,7 @@ nav ul li a:hover::after {
   width: 100%;
 }
 
-/* Article Grid Styles */
+/*----------------------------------------article----------------------------------------*/
 .article-link {
   text-decoration: none; /* Removes underline */
   color: inherit; /* Inherits color from parent element */

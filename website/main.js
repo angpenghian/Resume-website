@@ -43,10 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var aboutOffset = document.getElementById("header").offsetTop;
         
         // If the scroll position is beyond the header, display the "Go to top" button, otherwise hide it
-        if (
-            document.body.scrollTop > aboutOffset ||
-            document.documentElement.scrollTop > aboutOffset
-        ) {
+        if (window.pageYOffset > aboutOffset) {
             document.getElementById("topBtn").style.display = "block";
         } else {
             document.getElementById("topBtn").style.display = "none";
