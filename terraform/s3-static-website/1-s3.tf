@@ -31,3 +31,31 @@ resource "aws_s3_bucket_acl" "angpenghian-s3-acl" {
   bucket = aws_s3_bucket.angpenghian-s3.id
   acl    = "public-read"
 }
+
+resource "aws_s3_bucket_versioning" "angpenghian-s3-versioning" {
+  bucket = aws_s3_bucket.angpenghian-s3.id
+  versioning_configuration {
+    status = "Disabled"
+  }
+}
+
+resource "aws_s3_bucket_website_configuration" "angpenghian-s3-website" {
+  bucket = aws_s3_bucket.angpenghian-s3.id
+
+  index_document {
+    suffix = "index.html"
+  }
+
+  error_document {
+    key = "error.html"
+  }
+
+  routing_rule {
+    condition {
+      key_prefix_equals = "docs/"
+    }
+    redirect {
+      replace_key_prefix_with = "documents/"
+    }
+  }
+}
