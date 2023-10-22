@@ -3,7 +3,7 @@
 Welcome to the repository of DevOps engineer's resume project! This project not only showcases a website deployment but a complete CI/CD pipeline setup, embodying a myriad of modern-day technologies and services. The aim is to provide a streamlined, yet comprehensive demonstration of deploying and managing a web-based resume with a touch of DevOps elegance.
 
 The website is deployed at:<br/>
-https://angpenghian.com/pages/project1/resume-website.html<br/>
+[https://angpenghian.com/pages/project1/resume-website.html](https://angpenghian.com/pages/project1/resume-website.html)<br/>
 Currently, the website is deployed using the static website on S3 method.<br/>
 
 ## Tech Stack
@@ -23,7 +23,6 @@ The project leverages the following technologies:
 The project is architectured with three distinct infrastructure setups to exhibit various deployment strategies, offering a lens into practical, real-world DevOps scenarios. Each setup is a narrative of deploying a full-fledged website intertwined with a CI/CD pipeline, showcasing the harmony between development and operations.
 
 Feel free to explore, fork, and star this repository, and pull requests are always welcomed to make this project even better!
-
 
 ## Infrastructure Variations
 
@@ -59,6 +58,7 @@ Resume-website
 - Terraform installed
 - Git Installed
 - Kubernetes and kubectl (for server-based deployments)
+- [AWS CLI installed and configured](https://aws.amazon.com/cli/)
 
 ## Setup and Deployment
 
@@ -70,55 +70,49 @@ Ensure that your AWS credentials are securely stored in the `secrets` directory.
 
 Navigate to the desired infrastructure setup directory under `terraform` and edit the `terraform.tfvars` file to your liking. Then, run the following commands:
 
-Initialize terraform:
 ```bash
 terraform init
-```
-Start terraform planning:
-```bash
 terraform plan
-```
-Start terraform deployment:
-```bash
 terraform apply
 ```
 
 ## Website Deployment
-
 ### s3-static-website
-For the static website on S3 setup edit the nesscary parts in the terraform files and run the following commands:
+For the static website on S3 setup edit the necessary parts in the terraform files and run the following commands:
 ```bash
 terraform init
 terraform plan
 terraform apply
 ```
-Once the terraform deployment is completed, there would be configurations needed to be done on the Jekins server.
+Once the terraform deployment is completed, there would be configurations needed to be done on the Jenkins server.
 A more detailed guide on setting up the Jenkins server will be added soon.
 
 ### server-based
-For the server-based deployment with EC2 same as above, edit the nesscary parts in the terraform files and run the following commands:
+For the server-based deployment with EC2 same as above, edit the necessary parts in the terraform files and run the following commands:
 ```bash
 terraform init
 terraform plan
 terraform apply
 ```
-Once the terraform deployment is completed, there would be configurations needed to be done on the Jekins server.
+Once the terraform deployment is completed, there would be configurations needed to be done on the Jenkins server.
 A detailed guide can be found in here: https://angpenghian.com/pages/project1/resume-website.html
 
 ### server-less
-For the server-based deployment with EKS same as above, edit the nesscary parts in the terraform files and run the following commands:
+For the server-based deployment with EKS same as above, edit the necessary parts in the terraform files and run the following commands:
 ```bash
 terraform init
 terraform plan
 terraform apply
 ```
-Once the terraform deployment is completed, you also need deploy the kubernetes cluster and the website.
-run the following commands to configure the kubernetes config file:
+
+Once the terraform deployment is completed, you also need to deploy the Kubernetes cluster and the website.
+Run the following commands to configure the kubernetes config file:
 ```bash
 aws eks --region $(terraform output -raw region) update-kubeconfig \
     --name $(terraform output -raw cluster_name)
 ```
-Then navigate to the kubernetes_scripts directory and run the following commands:
+
+Then navigate to the `kubernetes_scripts` directory and run the following commands:
 ```bash
 kubectl apply -f jenkins-deployment.yaml
 kubectl apply -f nginx-deployment.yaml
