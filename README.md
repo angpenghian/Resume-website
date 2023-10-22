@@ -93,7 +93,7 @@ terraform plan
 terraform apply
 ```
 Once the terraform deployment is completed, there would be configurations needed to be done on the Jekins server.
-A more detailed guide will be provided in the future.
+A more detailed guide on setting up the Jenkins server will be added soon.
 
 ### server-based
 For the server-based deployment with EC2 same as above, edit the nesscary parts in the terraform files and run the following commands:
@@ -113,7 +113,18 @@ terraform plan
 terraform apply
 ```
 Once the terraform deployment is completed, you also need deploy the kubernetes cluster and the website.
-A more detailed guide will be provided in the future.
+run the following commands to configure the kubernetes config file:
+```bash
+aws eks --region $(terraform output -raw region) update-kubeconfig \
+    --name $(terraform output -raw cluster_name)
+```
+Then navigate to the kubernetes_scripts directory and run the following commands:
+```bash
+kubectl apply -f jenkins-deployment.yaml
+kubectl apply -f nginx-deployment.yaml
+kubectl apply -f private-lb.yaml
+```
+A more detailed guide on setting up the Jenkins server will be added soon.
 
 ## Accessing the Website
 can be found in here: https://angpenghian.com
