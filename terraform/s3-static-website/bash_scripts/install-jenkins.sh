@@ -1,75 +1,36 @@
 #!/bin/bash
+# This script is intended to install and configure Jenkins on Amazon Linux 2
 
-# Set 'errexit' and 'pipefail' options to exit script on error
-set -e
-set -o pipefail
+# Set the hostname of the machine to 'jenkins'
+sudo hostnamectl set-hostname jenkins
 
-# Function to print a message to stdout
-function print_message() {
-    echo -e "\n===== $1 ====="
-}
+# Update the system to ensure we have the latest packages and security updates
+sudo yum update -y
 
-# Function to check if a package is installed, and install it if not
-function check_install() {
-    if ! dpkg -l | grep -q "$1"; then
-        print_message "Installing $1..."
-        sudo apt-get install -y "$1"
-    else
-        print_message "$1 is already installed"
-    fi
-}
+# Download the Jenkins repository file to the /etc/yum.repos.d directory
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
 
-# Function to update APT and install necessary packages
-function update_and_install() {
-    print_message "Updating package list"
-    sudo apt-get update
+# Import the GPG key for Jenkins to ensure the authenticity of the packages
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 
-    # Check if Java is installed, if not, install it
-    check_install "openjdk-11-jre"
-}
+# Upgrade the system packages to their latest versions
+sudo yum upgrade -y
 
-# Function to set up Jenkins repository
-function setup_jenkins_repo() {
-    print_message "Setting up Jenkins repository"
+# Install Java 17 Amazon Corretto as it's a prerequisite for Jenkins
+sudo yum install java-17-amazon-corretto -y
 
-    # Download and install the Jenkins repository signing key
-    print_message "Downloading Jenkins repository signing key"
-    curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+# Install git as it's a prerequisite for Jenkins
+sudo yum install git -y
 
-    # Add the Jenkins repository to the system's sources list
-    print_message "Adding Jenkins repository to system's sources list"
-    echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+# Install Jenkins using the yum package manager
+sudo yum install jenkins -y
 
-    print_message "Updating package list again"
-    sudo apt-get update
-}
+# Enable the Jenkins service to start on boot
+sudo systemctl enable jenkins
 
-# Function to install Jenkins
-function install_jenkins() {
-    # Check if Jenkins is installed, if not, install it
-    check_install "jenkins"
-}
+# Start the Jenkins service
+sudo systemctl start jenkins
 
-# Main script logic
-function main() {
-    # Set the host name to jenkins
-    print_message "Setting hostname to Jenkins"
-    sudo hostnamectl set-hostname jenkins
-
-    # Update and install required packages
-    update_and_install
-
-    # Setup Jenkins repository
-    setup_jenkins_repo
-
-    # Install Jenkins
-    install_jenkins
-
-    print_message "Jenkins installation complete!"
-    print_message "Access server at http://[Your instance public IP]:8080"
-    print_message "To get the login password, run 'sudo cat /var/lib/jenkins/secrets/initialAdminPassword' on your Jenkins server command line"
-    print_message "After logging in, click 'Install suggested plugins', set up your user account and follow through 'Save and Continue' to finish setting up"
-}
-
-# Run the main function
-main
+# Check the status of the Jenkins service to ensure it's running properly
+sudo systemctl status jenkins

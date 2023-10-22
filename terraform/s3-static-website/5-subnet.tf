@@ -5,6 +5,6 @@ resource "aws_subnet" "masternode_subnet" {
     availability_zone = "ap-southeast-1a"
 
     tags = {
-        Name = "masternode_subnet_terraform"
+        Name = var.environment
     }
 }

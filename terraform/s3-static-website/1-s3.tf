@@ -6,6 +6,22 @@ resource "aws_s3_bucket" "angpenghian-s3" {
     }
 }
 
+resource "aws_s3_bucket_policy" "angpenghian-s3-policy" {
+  bucket = aws_s3_bucket.angpenghian-s3.id
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect    = "Allow",
+        Principal = "*",
+        Action    = "s3:GetObject",
+        Resource  = "${aws_s3_bucket.angpenghian-s3.arn}/*"
+      }
+    ]
+  })
+}
+
 resource "aws_s3_bucket_ownership_controls" "resume-s3-ownership-controls" {
   bucket = aws_s3_bucket.angpenghian-s3.id
   rule {

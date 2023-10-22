@@ -6,6 +6,6 @@ resource "aws_vpc" "resume_vpc" {
     enable_dns_hostnames = true
 
     tags = {
-        Name = "resume_vpc_terraform"
+        Name = var.environment
     }
 }

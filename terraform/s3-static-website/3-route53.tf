@@ -14,6 +14,16 @@ resource "aws_route53_record" "angpenghian" {
     }
 }
 
+resource "aws_route53_record" "masternode_angpenghian" {
+    zone_id = aws_route53_zone.resume_hosted_zone.zone_id
+    name    = "jenkins.angpenghian.com"
+    type    = "A"
+    ttl     = "300"
+    records = [aws_eip.masternode_eip.public_ip]
+
+    depends_on = [aws_eip_association.masternote_eip_assoc]
+}
+
 resource "aws_route53domains_registered_domain" "angpenghian_registered_domain" {
     domain_name = var.domain
 

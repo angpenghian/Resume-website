@@ -62,6 +62,6 @@ resource "aws_security_group" "resume_sg" {
 
     # Add tags to the Security Group
     tags = {
-        Name = "resume_sg_terraform"
+        Name = var.environment
     }
 }

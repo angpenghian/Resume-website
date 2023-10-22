@@ -6,6 +6,10 @@ resource "aws_route_table" "resume_route_table" {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_internet_gateway.resume_gw.id
     }
+
+    tags = {
+        Name = var.environment
+    }
 }
 
 # Define the AWS route table association to subnet 
